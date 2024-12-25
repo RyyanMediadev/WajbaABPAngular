@@ -1,6 +1,6 @@
 import { Environment } from '@abp/ng.core';
 
-const baseUrl = 'http://localhost:4200';
+const baseUrl = 'https://wajbaapi-08765bdfe115.herokuapp.com/';
 
 export const environment = {
   production: false,
@@ -10,7 +10,7 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://localhost:44330/',
+    issuer: baseUrl,
     redirectUri: baseUrl,
     clientId: 'Wajba_App',
     responseType: 'code',
@@ -19,7 +19,7 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'https://localhost:44330',
+      url: baseUrl,
       rootNamespace: 'Wajba',
     },
   },
