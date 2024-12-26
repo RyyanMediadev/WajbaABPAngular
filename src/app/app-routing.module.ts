@@ -8,6 +8,11 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
+    path: 'settings',
+    pathMatch: 'full',
+    loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
+  },
+  {
     path: 'account',
     loadChildren: () => import('@abp/ng.account').then(m => m.AccountModule.forLazy()),
   },
@@ -31,4 +36,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {})],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
