@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IconsComponent } from "../../../components/icons/icons.component";
 
 @Component({
   selector: 'app-settings-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgbModule, CommonModule, IconsComponent],
   templateUrl: './settings-sidebar.component.html',
   styleUrl: './settings-sidebar.component.scss'
 })
 export class SettingsSidebarComponent {
-  isSidebarOpen = false;
+  isSidebarOpen = true;
   selectedName: string = '';
   breadcrumbs: any;
   // private selectedNameSub!: Subscription;
