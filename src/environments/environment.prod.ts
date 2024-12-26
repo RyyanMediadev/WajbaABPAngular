@@ -10,7 +10,7 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://wajbaapi-08765bdfe115.herokuapp.com/',
+    issuer: 'https://wajbaapi-08765bdfe115.herokuapp.com',
     redirectUri: baseUrl,
     clientId: 'Wajba_App',
     responseType: 'code',
