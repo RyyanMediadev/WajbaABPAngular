@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+@import "./assets/styles/main";
+
 @keyframes donut-spin {
   0% {
     transform: rotate(0deg);
@@ -56,3 +59,9 @@
   height: 20px;
   background-image: url('/assets/images/getting-started/x.svg');
 }
+
+
+// .testone{
+//   background-color: $primary-color;
+  
+// }
