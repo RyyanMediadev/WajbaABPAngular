@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CompanyService } from '@proxy/controllers';
+import { SiteService } from '@proxy/controllers';
 import { SettingsSidebarComponent } from "../settings-sidebar/settings-sidebar.component";
 
 @Component({
@@ -17,7 +17,7 @@ export class SiteComponent {
 
   constructor(
     private fb: FormBuilder,
-    private companyService: CompanyService,
+    private siteService: SiteService,
     // private snackbarService: SnackbarService,
   ) {
     // Initialize the form with default values and validators
@@ -60,7 +60,7 @@ export class SiteComponent {
   }
 
   getCompany(): void {
-    // this.companyService.getCompanyById(1).subscribe(
+    // this.siteService.getCompanyById(1).subscribe(
     //   (response) => {
     //     // Populate form fields with fetched company data
     //     this.siteForm.patchValue({
@@ -112,7 +112,7 @@ export class SiteComponent {
       }
 
       // Call the service method to submit the data
-      // this.companyService.update(this.company.id, formData).subscribe({
+      // this.siteService.update(this.company.id, formData).subscribe({
       //   next: (response) => {
       //     console.log('Form submitted successfully!', response);
       //     this.siteForm.reset();
