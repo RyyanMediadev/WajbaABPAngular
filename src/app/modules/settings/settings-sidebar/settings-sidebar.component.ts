@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IconsComponent } from "../../../components/icons/icons.component";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings-sidebar',
@@ -12,9 +13,7 @@ import { IconsComponent } from "../../../components/icons/icons.component";
 })
 export class SettingsSidebarComponent {
   isSidebarOpen = true;
-  selectedName: string = '';
   breadcrumbs: any;
-  // private selectedNameSub!: Subscription;
 
   menuItems = [
     { type: 'link', name: 'Company', iconName: 'company', href: 'company' },
@@ -42,11 +41,12 @@ export class SettingsSidebarComponent {
     { type: 'link', name: 'License', iconName: 'license', href: 'license' },
   ];
 
-  loadComponent(item) {
-    this.selectedName = item.name;
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
-    // localStorage.setItem('selectedComponentName', name);
-
-    // this.sidebarService.setSelectedComponentName(name);
+  isActiveRoute(basePath: string): boolean {
+    const currentUrl = this.router.url;
+    // const basePathRegex = new RegExp(`^${basePath}(\/[a-zA-Z0-9_-]*)?$`);
+    // console.log(currentUrl, '/' + basePath);
+    return (currentUrl === '/' + basePath);
   }
 }
