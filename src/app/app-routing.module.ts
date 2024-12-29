@@ -4,10 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    // pathMatch: 'full',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
+<<<<<<< Updated upstream
+=======
+    path: 'settings',
+    // pathMatch: 'full',
+    loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
+  },
+  {
+>>>>>>> Stashed changes
     path: 'account',
     loadChildren: () => import('@abp/ng.account').then(m => m.AccountModule.forLazy()),
   },
