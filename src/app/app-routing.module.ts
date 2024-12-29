@@ -4,12 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    // pathMatch: 'full',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'settings',
-    pathMatch: 'full',
+    // pathMatch: 'full',
     loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
   },
   {

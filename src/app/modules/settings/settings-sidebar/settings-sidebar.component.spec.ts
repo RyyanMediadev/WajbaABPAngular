@@ -10,7 +10,7 @@ describe('SettingsSidebarComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SettingsSidebarComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SettingsSidebarComponent);
     component = fixture.componentInstance;
