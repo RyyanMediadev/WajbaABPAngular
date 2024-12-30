@@ -1,6 +1,7 @@
-import type { EntityDto } from '@abp/ng.core';
+import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 
-export interface BranchDto extends EntityDto<number> {
+export interface CreateUpdateBranchDto {
+  id:number;
   name?: string;
   longitude: number;
   latitude: number;
@@ -13,15 +14,6 @@ export interface BranchDto extends EntityDto<number> {
   status: number;
 }
 
-export interface CreateUpdateBranchDto {
-  name?: string;
-  longitude: number;
-  latitude: number;
-  email?: string;
-  phone?: string;
-  city?: string;
-  state?: string;
-  zipCode?: string;
-  address?: string;
-  status: number;
+export interface GetBranchInput extends PagedAndSortedResultRequestDto {
+  filter?: string;
 }

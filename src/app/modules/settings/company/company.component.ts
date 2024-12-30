@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SettingsSidebarComponent } from "../settings-sidebar/settings-sidebar.component";
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ export class CompanyComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private companyService: CompanyService,
+    @Inject(CompanyService) private companyService: CompanyService,
   ) {
     // Initialize the form with default values and validators
     this.companyForm = this.fb.group({
@@ -42,6 +42,7 @@ export class CompanyComponent implements OnInit {
     this.companyService.getById(this.companyId).subscribe({
       next: (response: any) => {
         // Assuming response contains company data
+        console.log(response)
         this.companyForm.patchValue({
           name: response.name,
           email: response.email,
@@ -52,7 +53,6 @@ export class CompanyComponent implements OnInit {
           countryCode: response.countryCode,
           zipCode: response.zipCode,
           address: response.address,
-          logoUrl: response.logoUrl
         });
       },
       error: (err) => console.error('Failed to load company data', err)
@@ -74,16 +74,7 @@ export class CompanyComponent implements OnInit {
       formData.append('ZipCode', this.companyForm.get('zipCode')?.value);
       formData.append('Address', this.companyForm.get('address')?.value);
 
-      // Append the logo file if selected
-      const logoFile = (document.getElementById('logo') as HTMLInputElement)?.files?.[0];
-      if (logoFile) {
-        formData.append('LogoUrl', logoFile);
-      } else {
-        alert('Please select a logo file.');
-        return;
-      }
-
-      // Call the service
+      // // Call the service
       // this.companyService.create(formData).subscribe({
       //   next: () => {
       //     alert('Company created successfully!');

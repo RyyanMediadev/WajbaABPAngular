@@ -37,4 +37,20 @@
   justify-content: center;
   align-items: center;
   background-color: $bg-color !important;
+  border: none;
+}
+
+@mixin close-button($bg-color, $font-size: 20px, $width: 177px, $height: 48px, $border-radius: 24px, $font-weight: 700) {
+  width: $width;
+  height: $height;
+  border-radius: $border-radius;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white !important;
+  border: 1px solid $bg-color !important;
+  color: $bg-color;
+  border: none;
 }

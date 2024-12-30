@@ -1,6 +1,6 @@
 import { RestService, Rest } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateComanyDto, GetComanyInput } from '../dtos/company-contact/models';
+import type { CreateUpdateComanyDto, GetComanyInput } from '../dtos/company-contact/models';
 import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 
 @Injectable({
@@ -8,16 +8,15 @@ import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 })
 export class CompanyService {
   apiName = 'Default';
+  
 
-
-  create = (input: CreateComanyDto, config?: Partial<Rest.Config>) =>
+  create = (input: CreateUpdateComanyDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Company',
-      body: input.logoUrl,
     },
     { apiName: this.apiName,...config });
-
+  
 
   delete = (id: number, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
@@ -25,7 +24,7 @@ export class CompanyService {
       url: `/api/Company/${id}`,
     },
     { apiName: this.apiName,...config });
-
+  
 
   getById = (id: number, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
@@ -33,22 +32,21 @@ export class CompanyService {
       url: `/api/Company/${id}`,
     },
     { apiName: this.apiName,...config });
-
+  
 
   getList = (input: GetComanyInput, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
       method: 'GET',
       url: '/api/Company',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { filter: input.filter, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
     { apiName: this.apiName,...config });
+  
 
-
-  update = (id: number, input: CreateComanyDto, config?: Partial<Rest.Config>) =>
+  update = (id: number, input: CreateUpdateComanyDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
       method: 'PUT',
       url: `/api/Company/${id}`,
-      body: input.logoUrl,
     },
     { apiName: this.apiName,...config });
 

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { IconsComponent } from "../../../components/icons/icons.component";
+import { IconsComponent } from "../../../shared/icons/icons.component";
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

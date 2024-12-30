@@ -1,7 +1,7 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CouponDto, CreateUpdateCouponDto } from '../dtos/coupon-contract/models';
+import type { CreateUpdateCouponDto, GetCouponsInput } from '../dtos/coupon-contract/models';
+import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class CouponService {
   
 
   create = (input: CreateUpdateCouponDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, CouponDto>({
+    this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Coupon',
       body: input.image,
@@ -20,32 +20,32 @@ export class CouponService {
   
 
   delete = (id: number, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, void>({
+    this.restService.request<any, IActionResult>({
       method: 'DELETE',
       url: `/api/Coupon/${id}`,
     },
     { apiName: this.apiName,...config });
   
 
-  get = (id: number, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, CouponDto>({
+  getById = (id: number, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
       method: 'GET',
       url: `/api/Coupon/${id}`,
     },
     { apiName: this.apiName,...config });
   
 
-  getList = (input: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, PagedResultDto<CouponDto>>({
+  getList = (input: GetCouponsInput, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
       method: 'GET',
       url: '/api/Coupon',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { filter: input.filter, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
     { apiName: this.apiName,...config });
   
 
   update = (id: number, input: CreateUpdateCouponDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, CouponDto>({
+    this.restService.request<any, IActionResult>({
       method: 'PUT',
       url: `/api/Coupon/${id}`,
       body: input.image,

@@ -1,7 +1,6 @@
-import type { IFormFile } from '../../microsoft/asp-net-core/http/models';
 import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 
-export interface CreateComanyDto {
+export interface CreateUpdateComanyDto {
   name: string;
   email: string;
   phone: string;
@@ -11,8 +10,8 @@ export interface CreateComanyDto {
   countryCode: string;
   zipCode: string;
   address: string;
-  logoUrl: IFormFile;
 }
 
 export interface GetComanyInput extends PagedAndSortedResultRequestDto {
+  filter?: string;
 }

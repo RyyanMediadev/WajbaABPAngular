@@ -7,6 +7,7 @@ export * from './dine-intable.service';
 export * from './faq.service';
 export * from './item-attribute.service';
 export * from './item-tax.service';
+export * from './item.service';
 export * from './language.service';
 export * from './offer.service';
 export * from './order-setup.service';
