@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CompanyComponent } from './company/company.component';
 import { SiteComponent } from './site/site.component';
 import { OrderSetupComponent } from './order-setup/order-setup.component';
+import { OTPComponent } from './otp/otp.component';
+import { NotificationComponent } from './notification/notification.component';
 // import { BranchesComponent } from './branches/branches.component';
 
 const routes: Routes = [
@@ -15,8 +17,8 @@ const routes: Routes = [
   },
   // { path: 'email', component: EmailComponent },
   { path: 'orderSetup', component: OrderSetupComponent },
-  // { path: 'OTP', component: OTPComponent },
-  // { path: 'notification_2', component: NotificationComponent },
+  { path: 'otp', component: OTPComponent },
+  { path: 'notification', component: NotificationComponent },
   // { path: 'notificationAlert', component: NotificationAlertComponent },
   // { path: 'socialMedia', component: SocialMediaComponent },
   // { path: 'aboutUs', component: FAQsComponent },

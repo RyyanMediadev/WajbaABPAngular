@@ -1,0 +1,56 @@
+<div class="d-flex items-center gap-2">
+  <app-settings-sidebar></app-settings-sidebar>
+
+  <section class="otp-section bg-white p-4 flex-grow-1">
+    <div class="header mb-4 pb-2 border-bottom">
+      <span class="title">OTP</span>
+    </div>
+
+    <form [formGroup]="otpForm" (ngSubmit)="onSubmit()" class="form-container">
+      <div class="form-row">
+        <!-- Order Type -->
+        <div class="form-group">
+          <label>Order Type <span class="text-danger">*</span></label>
+          <select formControlName="orderType" class="form-select bg-white">
+            <option value="" disabled selected>--</option>
+            <option *ngFor="let type of orderTypes" [value]="type.value">{{ type.label }}</option>
+          </select>
+          <div *ngIf="otpForm.get('orderType')?.invalid && otpForm.get('orderType')?.touched" class="text-danger">
+            Type is required.
+          </div>
+        </div>
+
+        <!-- OTP Length -->
+        <div class="form-group">
+          <label>OTP Length <span class="text-danger">*</span></label>
+          <select formControlName="otpLength" class="form-select bg-white">
+            <option value="" disabled selected>--</option>
+            <option *ngFor="let length of otpLengths" [value]="length">{{ length }}</option>
+          </select>
+          <div *ngIf="otpForm.get('otpLength')?.invalid && otpForm.get('otpLength')?.touched" class="text-danger">
+            OTP Length is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- OTP Expire Time -->
+      <div class="form-group">
+        <label>OTP Expire Time <span class="text-danger">*</span></label>
+        <select formControlName="otpExpireTime" class="form-select bg-white">
+          <option value="" disabled selected>--</option>
+          <option *ngFor="let time of otpExpireTimes" [value]="time">{{ time }}</option>
+        </select>
+        <div *ngIf="otpForm.get('otpExpireTime')?.invalid && otpForm.get('otpExpireTime')?.touched" class="text-danger">
+          Expire Time is required.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-danger">
+          Save
+        </button>
+      </div>
+    </form>
+  </section>
+</div>

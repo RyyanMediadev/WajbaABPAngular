@@ -17,20 +17,22 @@ export class CompanyComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    @Inject(CompanyService) private companyService: CompanyService,
+    private companyService: CompanyService
   ) {
-    // Initialize the form with default values and validators
     this.companyForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{7,14}$/)]],
-      websiteURL: ['', Validators.required],
+      websiteURL: [
+        '',
+        [Validators.required, Validators.pattern('^(https?|ftp)://[^\s/$.?#].[^\s]*$')],
+      ],
       city: ['', Validators.required],
       state: ['', Validators.required],
       countryCode: ['', Validators.required],
       zipCode: ['', Validators.required],
       address: ['', Validators.required],
-      logoUrl: ['']
+      logoUrl: [''],
     });
   }
 
@@ -39,54 +41,31 @@ export class CompanyComponent implements OnInit {
   }
 
   loadCompanyData() {
-    this.companyService.getById(this.companyId).subscribe({
-      next: (response: any) => {
-        // Assuming response contains company data
-        console.log(response)
-        this.companyForm.patchValue({
-          name: response.data.name,
-          email: response.data.email,
-          phone: response.data.phone,
-          websiteURL: response.data.websiteURL,
-          city: response.data.city,
-          state: response.data.state,
-          countryCode: response.data.countryCode,
-          zipCode: response.data.zipCode,
-          address: response.data.address,
-        });
-      },
-      error: (err) => console.error('Failed to load company data', err)
-    });
+    // this.companyService.get().subscribe({
+    //   next: (response) => {
+    //     this.companyForm.patchValue(response);
+    //   },
+    //   error: (err) => {
+    //     console.error('Failed to load company data:', err);
+    //   },
+    // });
   }
 
   submitForm() {
     if (this.companyForm.valid) {
-      const formData = new FormData();
+      const formData = this.companyForm.value;
 
-      // Append form fields
-      formData.append('Name', this.companyForm.get('name')?.value);
-      formData.append('Email', this.companyForm.get('email')?.value);
-      formData.append('Phone', this.companyForm.get('phone')?.value);
-      formData.append('WebsiteURL', this.companyForm.get('websiteURL')?.value);
-      formData.append('City', this.companyForm.get('city')?.value);
-      formData.append('State', this.companyForm.get('state')?.value);
-      formData.append('CountryCode', this.companyForm.get('countryCode')?.value);
-      formData.append('ZipCode', this.companyForm.get('zipCode')?.value);
-      formData.append('Address', this.companyForm.get('address')?.value);
-
-      // Call the service
-      this.companyService.create(formData).subscribe({
+      this.companyService.update(formData).subscribe({
         next: () => {
-          alert('Company created successfully!');
+          alert('Company updated successfully!');
         },
         error: (error) => {
-          console.error('Error creating company:', error);
-          alert('Failed to create company.');
+          console.error('Error updating company:', error);
+          alert('Failed to update company.');
         },
       });
     } else {
       this.companyForm.markAllAsTouched();
     }
   }
-
 }

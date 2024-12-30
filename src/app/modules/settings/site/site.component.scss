@@ -1,6 +1,10 @@
 @import '../../../../assets/styles/main';
 @include radio-label(#F458591F, var(--red-color), #CCCCCC4D, transparent);
 
+section {
+  height: fit-content;
+}
+
 button {
   @include submit-button(var(--red-color));
 }

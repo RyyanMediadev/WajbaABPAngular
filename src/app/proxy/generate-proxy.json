@@ -1807,21 +1807,13 @@
               "allowAnonymous": null,
               "implementFrom": "Wajba.Controllers.CompanyController"
             },
-            "UpdateAsyncByIdAndInput": {
-              "uniqueName": "UpdateAsyncByIdAndInput",
+            "UpdateAsyncByInput": {
+              "uniqueName": "UpdateAsyncByInput",
               "name": "UpdateAsync",
               "httpMethod": "PUT",
-              "url": "api/Company/{id}",
+              "url": "api/Company",
               "supportedVersions": [],
               "parametersOnMethod": [
-                {
-                  "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
                 {
                   "name": "input",
                   "typeAsString": "Wajba.Dtos.CompanyContact.CreateUpdateComanyDto, Wajba.Application.Contracts",
@@ -1832,18 +1824,6 @@
                 }
               ],
               "parameters": [
-                {
-                  "nameOnMethod": "id",
-                  "name": "id",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                },
                 {
                   "nameOnMethod": "input",
                   "name": "Name",
@@ -5878,232 +5858,6 @@
           "type": "Wajba.Controllers.SiteController",
           "interfaces": [],
           "actions": {
-            "UpdateAsyncByIdAndInput": {
-              "uniqueName": "UpdateAsyncByIdAndInput",
-              "name": "UpdateAsync",
-              "httpMethod": "PUT",
-              "url": "{id}",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "input",
-                  "typeAsString": "Wajba.Dtos.SitesContact.CreateSiteDto, Wajba.Application.Contracts",
-                  "type": "Wajba.Dtos.SitesContact.CreateSiteDto",
-                  "typeSimple": "Wajba.Dtos.SitesContact.CreateSiteDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "id",
-                  "name": "id",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Name",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Email",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "IOSAPPLink",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "AndroidAPPLink",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Copyrights",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "GoogleMapKey",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Quantity",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "CurrencyPosition",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "LanguageSwitch",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "BranchId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "CurrencyId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "LanguageId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                }
-              ],
-              "returnValue": {
-                "type": "Microsoft.AspNetCore.Mvc.IActionResult",
-                "typeSimple": "Microsoft.AspNetCore.Mvc.IActionResult"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Wajba.Controllers.SiteController"
-            },
-            "GetByIdAsyncById": {
-              "uniqueName": "GetByIdAsyncById",
-              "name": "GetByIdAsync",
-              "httpMethod": "GET",
-              "url": "{id}",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "id",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "id",
-                  "name": "id",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Microsoft.AspNetCore.Mvc.IActionResult",
-                "typeSimple": "Microsoft.AspNetCore.Mvc.IActionResult"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Wajba.Controllers.SiteController"
-            },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
               "name": "DeleteAsync",
@@ -16663,159 +16417,6 @@
         }
       ]
     },
-    "Wajba.Dtos.SitesContact.CreateSiteDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "Name",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Email",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "IOSAPPLink",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "AndroidAPPLink",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Copyrights",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "GoogleMapKey",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Quantity",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "CurrencyPosition",
-          "jsonName": null,
-          "type": "Wajba.Enums.CurrencyPosition",
-          "typeSimple": "Wajba.Enums.CurrencyPosition",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "LanguageSwitch",
-          "jsonName": null,
-          "type": "Wajba.Enums.LanguageSwitch",
-          "typeSimple": "Wajba.Enums.LanguageSwitch",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "BranchId",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "CurrencyId",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "LanguageId",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
     "Wajba.Dtos.ThemesContract.CreateThemesDto": {
       "baseType": null,
       "isEnum": false,
@@ -16935,40 +16536,12 @@
       "genericArguments": null,
       "properties": []
     },
-    "Wajba.Enums.CurrencyPosition": {
-      "baseType": "System.Enum",
-      "isEnum": true,
-      "enumNames": [
-        "left",
-        "right"
-      ],
-      "enumValues": [
-        0,
-        1
-      ],
-      "genericArguments": null,
-      "properties": null
-    },
     "Wajba.Enums.DiscountType": {
       "baseType": "System.Enum",
       "isEnum": true,
       "enumNames": [
         "Fixed",
         "Percentage"
-      ],
-      "enumValues": [
-        0,
-        1
-      ],
-      "genericArguments": null,
-      "properties": null
-    },
-    "Wajba.Enums.LanguageSwitch": {
-      "baseType": "System.Enum",
-      "isEnum": true,
-      "enumNames": [
-        "Disable",
-        "Enable"
       ],
       "enumValues": [
         0,

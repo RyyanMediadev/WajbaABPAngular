@@ -62,8 +62,12 @@
   background-image: url('/assets/images/getting-started/x.svg');
 }
 
+tbody {
+  tr[_ngcontent-ng-c563922191]:nth-of-type(odd) {
+    background-color: #F5F5F5;
+  }
 
-// .testone{
-//   background-color: $primary-color;
-
-// }
+  tr[_ngcontent-ng-c563922191]:nth-of-type(even) {
+    background-color: white;
+  }
+}

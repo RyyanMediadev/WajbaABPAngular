@@ -11,7 +11,6 @@ import * as ItemsDtos from './items-dtos';
 import * as Languages from './languages';
 import * as OrderSetupContract from './order-setup-contract';
 import * as Otpcontract from './otpcontract';
-import * as SitesContact from './sites-contact';
 import * as ThemesContract from './themes-contract';
 import * as TimeSlotsContract from './time-slots-contract';
-export { BranchContract, Categories, CompanyContact, CouponContract, CurrenciesContract, DineInTableContract, FaqsContract, ItemAttributes, ItemTaxContract, ItemsDtos, Languages, OrderSetupContract, Otpcontract, SitesContact, ThemesContract, TimeSlotsContract };
+export { BranchContract, Categories, CompanyContact, CouponContract, CurrenciesContract, DineInTableContract, FaqsContract, ItemAttributes, ItemTaxContract, ItemsDtos, Languages, OrderSetupContract, Otpcontract, ThemesContract, TimeSlotsContract };

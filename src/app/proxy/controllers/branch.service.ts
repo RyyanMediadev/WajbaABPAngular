@@ -15,7 +15,7 @@ export class BranchService {
       method: 'DELETE',
       url: `/api/Branch/${id}`,
     },
-    { apiName: this.apiName,...config });
+      { apiName: this.apiName, ...config });
 
 
   getById = (id: number, config?: Partial<Rest.Config>) =>
@@ -23,7 +23,7 @@ export class BranchService {
       method: 'GET',
       url: `/api/Branch/${id}`,
     },
-    { apiName: this.apiName,...config });
+      { apiName: this.apiName, ...config });
 
 
   getList = (input: GetBranchInput, config?: Partial<Rest.Config>) =>
@@ -32,23 +32,23 @@ export class BranchService {
       url: '/api/Branch',
       params: { filter: input.filter, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
-    { apiName: this.apiName,...config });
+      { apiName: this.apiName, ...config });
 
 
-    create = (input: FormData, config?: Partial<Rest.Config>) =>
-      this.restService.request<any, IActionResult>({
-        method: 'POST',
-        url: '/api/Branch',
-        body: input, // Pass FormData as the body
-      }, { apiName: this.apiName, ...config });
+  create = (input: FormData, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
+      method: 'POST',
+      url: '/api/Branch',
+      body: input, // Pass FormData as the body
+    }, { apiName: this.apiName, ...config });
 
-    update = (id: number, input: FormData, config?: Partial<Rest.Config>) =>
-      this.restService.request<any, IActionResult>({
-        method: 'PUT',
-        url: `/api/Branch/${id}`,
-        body: input, // Pass FormData as the body
-      }, { apiName: this.apiName, ...config });
+  update = (id: number, input: FormData, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
+      method: 'PUT',
+      url: `/api/Branch/${id}`,
+      body: input, // Pass FormData as the body
+    }, { apiName: this.apiName, ...config });
 
 
-  constructor(private restService: RestService) {}
+  constructor(private restService: RestService) { }
 }
