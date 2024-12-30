@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompanyComponent } from './company/company.component';
 import { SiteComponent } from './site/site.component';
+import { OrderSetupComponent } from './order-setup/order-setup.component';
 // import { BranchesComponent } from './branches/branches.component';
 
 const routes: Routes = [
@@ -12,9 +13,8 @@ const routes: Routes = [
     path: 'branches',
     loadChildren: () => import('./branches/branches.module').then(m => m.BranchesModule),
   },
-  // { path: 'branches', component: BranchesComponent },
   // { path: 'email', component: EmailComponent },
-  // { path: 'orderSetup', component: OrderSetupComponent },
+  { path: 'orderSetup', component: OrderSetupComponent },
   // { path: 'OTP', component: OTPComponent },
   // { path: 'notification_2', component: NotificationComponent },
   // { path: 'notificationAlert', component: NotificationAlertComponent },

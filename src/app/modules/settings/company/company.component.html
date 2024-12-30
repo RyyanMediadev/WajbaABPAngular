@@ -47,13 +47,13 @@
             </div>
           </div>
 
-          <!-- Website -->
+          <!-- websiteURL -->
           <div class="form-group w-100 w-md-50 mb-2">
-            <label for="website" class="text-black">Website <span class="text-danger">*</span></label>
+            <label for="websiteURL" class="text-black">Website <span class="text-danger">*</span></label>
             <div class="input-group">
-              <input id="website" formControlName="website" type="text" class="form-control bg-white" />
+              <input id="websiteURL" formControlName="websiteURL" type="text" class="form-control bg-white" />
             </div>
-            <div *ngIf="companyForm.get('website')?.invalid && companyForm.get('website')?.touched" class="text-danger">
+            <div *ngIf="companyForm.get('websiteURL')?.invalid && companyForm.get('websiteURL')?.touched" class="text-danger">
               Website is required.
             </div>
           </div>

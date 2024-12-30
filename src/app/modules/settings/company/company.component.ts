@@ -24,7 +24,7 @@ export class CompanyComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{7,14}$/)]],
-      website: ['', Validators.required],
+      websiteURL: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
       countryCode: ['', Validators.required],
@@ -44,15 +44,15 @@ export class CompanyComponent implements OnInit {
         // Assuming response contains company data
         console.log(response)
         this.companyForm.patchValue({
-          name: response.name,
-          email: response.email,
-          phone: response.phone,
-          website: response.website,
-          city: response.city,
-          state: response.state,
-          countryCode: response.countryCode,
-          zipCode: response.zipCode,
-          address: response.address,
+          name: response.data.name,
+          email: response.data.email,
+          phone: response.data.phone,
+          websiteURL: response.data.websiteURL,
+          city: response.data.city,
+          state: response.data.state,
+          countryCode: response.data.countryCode,
+          zipCode: response.data.zipCode,
+          address: response.data.address,
         });
       },
       error: (err) => console.error('Failed to load company data', err)
@@ -67,26 +67,26 @@ export class CompanyComponent implements OnInit {
       formData.append('Name', this.companyForm.get('name')?.value);
       formData.append('Email', this.companyForm.get('email')?.value);
       formData.append('Phone', this.companyForm.get('phone')?.value);
-      formData.append('WebsiteURL', this.companyForm.get('website')?.value);
+      formData.append('WebsiteURL', this.companyForm.get('websiteURL')?.value);
       formData.append('City', this.companyForm.get('city')?.value);
       formData.append('State', this.companyForm.get('state')?.value);
       formData.append('CountryCode', this.companyForm.get('countryCode')?.value);
       formData.append('ZipCode', this.companyForm.get('zipCode')?.value);
       formData.append('Address', this.companyForm.get('address')?.value);
 
-      // // Call the service
-      // this.companyService.create(formData).subscribe({
-      //   next: () => {
-      //     alert('Company created successfully!');
-      //   },
-      //   error: (error) => {
-      //     console.error('Error creating company:', error);
-      //     alert('Failed to create company.');
-      //   },
-      // });
+      // Call the service
+      this.companyService.create(formData).subscribe({
+        next: () => {
+          alert('Company created successfully!');
+        },
+        error: (error) => {
+          console.error('Error creating company:', error);
+          alert('Failed to create company.');
+        },
+      });
     } else {
-      // alert('Please fill out all required fields.');
       this.companyForm.markAllAsTouched();
     }
   }
+
 }

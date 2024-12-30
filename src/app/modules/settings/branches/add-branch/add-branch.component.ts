@@ -111,7 +111,6 @@ export class AddBranchComponent {
     }
   }
 
-
   openMapModal() {
     const modalRef = this.modalService.open(MapModalComponent, {
       size: 'lg',
