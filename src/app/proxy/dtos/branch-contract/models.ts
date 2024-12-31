@@ -1,7 +1,7 @@
 import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 
 export interface CreateUpdateBranchDto {
-  id:number;
+  id?: number;
   name?: string;
   longitude: number;
   latitude: number;

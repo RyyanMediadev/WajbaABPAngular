@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SiteService } from '@proxy/controllers';
+import { BranchService, CurrenciesService, LanguageService, SiteService } from '@proxy/controllers';
 import { SettingsSidebarComponent } from "../settings-sidebar/settings-sidebar.component";
 
 @Component({
@@ -11,14 +11,20 @@ import { SettingsSidebarComponent } from "../settings-sidebar/settings-sidebar.c
   templateUrl: './site.component.html',
   styleUrl: './site.component.scss'
 })
-export class SiteComponent {
+export class SiteComponent implements OnInit {
   siteForm: FormGroup;
   logoFile: File | null = null;
+
+  languages: { value: string, viewValue: string }[] = [];
+  branches: { value: string, viewValue: string }[] = [];
+  currencies: { value: string, viewValue: string }[] = [];
 
   constructor(
     private fb: FormBuilder,
     private siteService: SiteService,
-    // private snackbarService: SnackbarService,
+    private branchService: BranchService,
+    private languageService: LanguageService,
+    private currenciesService: CurrenciesService
   ) {
     // Initialize the form with default values and validators
     this.siteForm = this.fb.group({
@@ -37,52 +43,80 @@ export class SiteComponent {
     });
   }
 
-  languages = [
-    { value: 'en', viewValue: 'English' },
-    { value: 'ar', viewValue: 'Arabic' },
-    { value: 'fr', viewValue: 'French' }
-  ];
-
-  branches = [
-    { value: 'branch1', viewValue: 'Branch 1' },
-    { value: 'branch2', viewValue: 'Branch 2' },
-    { value: 'branch3', viewValue: 'Branch 3' }
-  ];
-
-  currencies = [
-    { value: 'usd', viewValue: 'USD' },
-    { value: 'eur', viewValue: 'Euro' },
-    { value: 'sar', viewValue: 'Saudi Riyal' }
-  ];
-
   ngOnInit(): void {
     this.getCompany();
+    this.loadLanguages();
+    this.loadBranches();
+    this.loadCurrencies();
   }
 
   getCompany(): void {
-    // this.siteService.getCompanyById(1).subscribe(
-    //   (response) => {
-    //     // Populate form fields with fetched company data
-    //     this.siteForm.patchValue({
-    //       name: this.response.name,
-    //       email: this.response.email,
-    //       phone: this.response.phone,
-    //       website: this.response.websiteURL,
-    //       city: this.response.city,
-    //       state: this.response.state,
-    //       countryCode: this.response.countryCode,
-    //       zipCode: this.response.zipCode,
-    //       address: this.response.address,
-    //       logoUrl: this.response.logoUrl
-    //     });
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching company:', error);
-    //   }
-    // );
+    this.siteService.getById().subscribe(
+      (response) => {
+        this.siteForm.patchValue({
+          name: response.data.name,
+          email: response.data.email,
+          phone: response.data.phone,
+          website: response.data.websiteURL,
+          city: response.data.city,
+          state: response.data.state,
+          countryCode: response.data.countryCode,
+          zipCode: response.data.zipCode,
+          address: response.data.address,
+          logoUrl: response.data.logoUrl
+        });
+      },
+      (error) => {
+        console.error('Error fetching company:', error);
+      }
+    );
   }
 
-  // Method to handle file input change
+  loadLanguages(): void {
+    this.languageService.getList().subscribe({
+      next: (languages) => {
+        console.log(languages)
+        this.languages = languages.map(lang => ({
+          value: lang.code,
+          viewValue: lang.name
+        }));
+      },
+      error: (error) => {
+        console.error('Error fetching languages:', error);
+      }
+    });
+  }
+
+  loadBranches(): void {
+    this.branchService.getList().subscribe({
+      next: (branches) => {
+        console.log(branches)
+        this.branches = branches.map(branch => ({
+          value: branch.id,
+          viewValue: branch.name
+        }));
+      },
+      error: (error) => {
+        console.error('Error fetching branches:', error);
+      }
+    });
+  }
+
+  loadCurrencies(): void {
+    this.currenciesService.getList().subscribe({
+      next: (currencies) => {
+        console.log(currencies)
+        this.currencies = currencies.map(currency => ({
+          value: currency.code,
+          viewValue: currency.name
+        }));
+      },
+      error: (error) => {
+        console.error('Error fetching currencies:', error);
+      }
+    });
+  }
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -90,12 +124,9 @@ export class SiteComponent {
     }
   }
 
-  // Method to handle form submission
   submitForm() {
     if (this.siteForm.valid) {
       const formData = new FormData();
-
-      // Append form fields to FormData
       formData.append('Name', this.siteForm.get('name')?.value);
       formData.append('Email', this.siteForm.get('email')?.value);
       formData.append('Phone', this.siteForm.get('phone')?.value);
@@ -106,7 +137,6 @@ export class SiteComponent {
       formData.append('ZipCode', this.siteForm.get('zipCode')?.value);
       formData.append('Address', this.siteForm.get('address')?.value);
 
-      // Append the file if selected
       if (this.logoFile) {
         formData.append('LogoUrl', this.logoFile);
       }
@@ -122,7 +152,6 @@ export class SiteComponent {
       //   }
       // });
     } else {
-      // Mark all controls as touched to show validation errors
       this.siteForm.markAllAsTouched();
     }
   }

@@ -8,7 +8,7 @@ import type { CreateUpdateLanguageDto, LanguageDto } from '../dtos/languages/mod
 })
 export class LanguageService {
   apiName = 'Default';
-  
+
 
   create = (input: CreateUpdateLanguageDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, LanguageDto>({
@@ -17,7 +17,7 @@ export class LanguageService {
       body: input.image,
     },
     { apiName: this.apiName,...config });
-  
+
 
   delete = (id: number, config?: Partial<Rest.Config>) =>
     this.restService.request<any, void>({
@@ -25,7 +25,7 @@ export class LanguageService {
       url: `/api/Language/${id}`,
     },
     { apiName: this.apiName,...config });
-  
+
 
   get = (id: number, config?: Partial<Rest.Config>) =>
     this.restService.request<any, LanguageDto>({
@@ -33,16 +33,16 @@ export class LanguageService {
       url: `/api/Language/${id}`,
     },
     { apiName: this.apiName,...config });
-  
 
-  getList = (input: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, PagedResultDto<LanguageDto>>({
+
+  getList = (input?: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, any>({
       method: 'GET',
       url: '/api/Language',
       params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
     { apiName: this.apiName,...config });
-  
+
 
   update = (id: number, input: CreateUpdateLanguageDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, LanguageDto>({

@@ -1,4 +1,3 @@
-import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 
 export interface CreateUpdateComanyDto {
   name: string;
@@ -10,8 +9,4 @@ export interface CreateUpdateComanyDto {
   countryCode: string;
   zipCode: string;
   address: string;
-}
-
-export interface GetComanyInput extends PagedAndSortedResultRequestDto {
-  filter?: string;
 }

@@ -26,7 +26,7 @@ export class BranchService {
       { apiName: this.apiName, ...config });
 
 
-  getList = (input: GetBranchInput, config?: Partial<Rest.Config>) =>
+  getList = (input?: GetBranchInput, config?: Partial<Rest.Config>) =>
     this.restService.request<any, any>({
       method: 'GET',
       url: '/api/Branch',

@@ -1,51 +1,52 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
+import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateUpdateCurrenciesDto, CurrenciesDto } from '../dtos/currencies-contract/models';
+import type { CreateUpdateCurrenciesDto } from '../dtos/currencies-contract/models';
+import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CurrenciesService {
   apiName = 'Default';
-  
+
 
   create = (input: CreateUpdateCurrenciesDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, CurrenciesDto>({
+    this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Currencies',
       body: input,
     },
     { apiName: this.apiName,...config });
-  
+
 
   delete = (id: number, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, void>({
+    this.restService.request<any, IActionResult>({
       method: 'DELETE',
       url: `/api/Currencies/${id}`,
     },
     { apiName: this.apiName,...config });
-  
 
-  get = (id: number, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, CurrenciesDto>({
+
+  getById = (id: number, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
       method: 'GET',
       url: `/api/Currencies/${id}`,
     },
     { apiName: this.apiName,...config });
-  
 
-  getList = (input: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, PagedResultDto<CurrenciesDto>>({
+
+  getList = (input?: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, any>({
       method: 'GET',
       url: '/api/Currencies',
       params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
     { apiName: this.apiName,...config });
-  
+
 
   update = (id: number, input: CreateUpdateCurrenciesDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, CurrenciesDto>({
+    this.restService.request<any, IActionResult>({
       method: 'PUT',
       url: `/api/Currencies/${id}`,
       body: input,

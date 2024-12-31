@@ -53,8 +53,12 @@
             <div class="input-group">
               <input id="websiteURL" formControlName="websiteURL" type="text" class="form-control bg-white" />
             </div>
-            <div *ngIf="companyForm.get('websiteURL')?.invalid && companyForm.get('websiteURL')?.touched" class="text-danger">
-              Website is required.
+            <div *ngIf="companyForm.get('websiteURL')?.invalid && companyForm.get('websiteURL')?.touched"
+              class="text-danger">
+              <div *ngIf="companyForm.get('websiteURL')?.errors?.['required']"> Website is required.
+              </div>
+              <div *ngIf="companyForm.get('websiteURL')?.errors?.['pattern']">Invalid Website is required.
+                format.</div>
             </div>
           </div>
         </div>

@@ -1,9 +1,14 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { SettingsSidebarComponent } from "../settings-sidebar/settings-sidebar.component";
 import { CommonModule } from '@angular/common';
 import { CompanyService } from '@proxy/controllers';
+import { CreateUpdateComanyDto } from '@proxy/dtos/company-contact';
 
+export function urlValidator(control: AbstractControl): ValidationErrors | null {
+  const urlRegex = /^(https?|ftp)?(:\/\/)?[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+.*$/;
+  return urlRegex.test(control.value) ? null : { invalidUrl: true };
+}
 @Component({
   selector: 'app-company',
   standalone: true,
@@ -23,10 +28,7 @@ export class CompanyComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{7,14}$/)]],
-      websiteURL: [
-        '',
-        [Validators.required, Validators.pattern('^(https?|ftp)://[^\s/$.?#].[^\s]*$')],
-      ],
+      websiteURL: ['', [Validators.required, urlValidator]],
       city: ['', Validators.required],
       state: ['', Validators.required],
       countryCode: ['', Validators.required],
@@ -41,27 +43,39 @@ export class CompanyComponent implements OnInit {
   }
 
   loadCompanyData() {
-    // this.companyService.get().subscribe({
-    //   next: (response) => {
-    //     this.companyForm.patchValue(response);
-    //   },
-    //   error: (err) => {
-    //     console.error('Failed to load company data:', err);
-    //   },
-    // });
+    this.companyService.getById().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.companyForm.patchValue(response.data);
+      },
+      error: (err) => {
+        console.error('Failed to load company data:', err);
+      },
+    });
   }
 
   submitForm() {
     if (this.companyForm.valid) {
-      const formData = this.companyForm.value;
+      const formData = new FormData();
+      Object.keys(this.companyForm.controls).forEach((key) => {
+        formData.append(key, this.companyForm.get(key)?.value || '');
+      });
 
       this.companyService.update(formData).subscribe({
         next: () => {
-          alert('Company updated successfully!');
+          console.log('Company data updated successfully.');
+          alert('Company updated successfully');
         },
-        error: (error) => {
-          console.error('Error updating company:', error);
-          alert('Failed to update company.');
+        error: (err) => {
+          console.error('Failed to update company data:', err);
+          if (err.error?.errors) {
+            const validationErrors = err.error.errors;
+            for (const field in validationErrors) {
+              if (this.companyForm.controls[field]) {
+                this.companyForm.controls[field].setErrors({ serverError: validationErrors[field] });
+              }
+            }
+          }
         },
       });
     } else {
