@@ -71,3 +71,26 @@ tbody {
     background-color: white;
   }
 }
+
+
+.section-title {
+  font-size: 1.25rem !important;
+  font-weight: bold;
+  margin: 0;
+  // padding: 0;
+}
+
+
+/* Hide the tooltip by default */
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  top: -1rem;
+}
+
+/* Show the tooltip when hovering over the button */
+.position-relative:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

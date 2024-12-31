@@ -6,7 +6,7 @@ import { AfterActionService } from 'src/app/services/after-action/after-action-s
 import { IconsComponent } from "../../../../shared/icons/icons.component";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MapModalComponent } from '../map-modal/map-modal.component';
-import { CreateUpdateBranchDto } from '@proxy/dtos/branch-contract';
+import { CreateBranchDto, UpdateBranchDto } from '@proxy/dtos/branch-contract';
 
 @Component({
   selector: 'app-add-branch',
@@ -17,7 +17,7 @@ import { CreateUpdateBranchDto } from '@proxy/dtos/branch-contract';
 })
 export class AddBranchComponent {
   @Input() isOpen: boolean = false;
-  @Input() branch: CreateUpdateBranchDto | null = null;
+  @Input() branch: UpdateBranchDto | null = null;
   @Output() close = new EventEmitter<void>();
 
   branchForm: FormGroup;
@@ -30,6 +30,7 @@ export class AddBranchComponent {
     private modalService: NgbModal,
   ) {
     this.branchForm = this.fb.group({
+      id: [null],
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       city: ['', Validators.required],
@@ -37,7 +38,7 @@ export class AddBranchComponent {
       phone: ['', [Validators.required]],
       zipCode: ['', [Validators.required]],
       address: ['', Validators.required],
-      status: ['active'],
+      status: [1],
       longitude: ['', [Validators.required]],
       latitude: ['', [Validators.required]],
     });
@@ -49,8 +50,9 @@ export class AddBranchComponent {
     }
   }
 
-  populateForm(branch: CreateUpdateBranchDto) {
+  populateForm(branch: UpdateBranchDto) {
     this.branchForm.patchValue({
+      id: branch.id,
       name: branch.name,
       email: branch.email,
       city: branch.city,
@@ -70,43 +72,47 @@ export class AddBranchComponent {
 
   submitForm() {
     if (this.branchForm.valid) {
-      const branchData = this.branchForm.value;
+      // Declare the formValue outside the if-else block
+      let formValue: CreateBranchDto | UpdateBranchDto;
 
-      // Create FormData object to append the form fields
-      const formData = new FormData();
-      formData.append('Name', branchData.name);
-      formData.append('Email', branchData.email);
-      formData.append('City', branchData.city);
-      formData.append('State', branchData.state);
-      formData.append('Phone', branchData.phone);
-      formData.append('ZipCode', branchData.zipCode);
-      formData.append('Address', branchData.address);
-      formData.append('Status', branchData.status === 'active' ? '1' : '0');
-      formData.append('Longitude', branchData.longitude);
-      formData.append('Latitude', branchData.latitude);
+      // Determine whether it's an update or create operation
+      if (this.branchForm.value.id) {
+        formValue = this.branchForm.value as UpdateBranchDto;
+      } else {
+        formValue = this.branchForm.value as CreateBranchDto;
+      }
+
+      console.log(formValue);
 
       if (this.branch) {
         // Update existing branch
-        this.branchService.update(this.branch.id, formData).subscribe({
-          next: () => {
-            console.log('Branch updated successfully');
-            this.afterActionService.reloadCurrentRoute();
-            this.closeModal();
-          },
-          error: (err) => console.error('Update Error:', err),
-        });
+        this.branchService.update(formValue as UpdateBranchDto)
+          .subscribe(
+            response => {
+              // Handle successful response
+              console.log('Branch updated successfully:', response);
+            },
+            error => {
+              // Handle error response
+              console.error('Error updating branch:', error);
+            }
+          );
       } else {
         // Create a new branch
-        this.branchService.create(formData).subscribe({
-          next: () => {
-            console.log('Branch created successfully');
-            this.afterActionService.reloadCurrentRoute();
-            this.closeModal();
-          },
-          error: (err) => console.error('Create Error:', err),
-        });
+        this.branchService.create(formValue as CreateBranchDto)
+          .subscribe(
+            response => {
+              // Handle successful response
+              console.log('Branch created successfully:', response);
+            },
+            error => {
+              // Handle error response
+              console.error('Error creating branch:', error);
+            }
+          );
       }
     } else {
+      // Mark all form controls as touched to trigger validation messages
       this.branchForm.markAllAsTouched();
     }
   }

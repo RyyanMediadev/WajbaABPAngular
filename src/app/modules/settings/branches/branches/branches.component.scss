@@ -27,17 +27,3 @@
     background-color: #FEEEEE;
   }
 }
-
-/* Hide the tooltip by default */
-.tooltip-text {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  top: -1rem;
-}
-
-/* Show the tooltip when hovering over the button */
-.position-relative:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
-}

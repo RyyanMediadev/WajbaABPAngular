@@ -10,5 +10,13 @@ export interface CreateUpdateCategoryDto {
 }
 
 export interface GetCategoryInput extends PagedAndSortedResultRequestDto {
-  filter?: string;
+  name?: string;
+}
+
+export interface UpdateCategory {
+  id: number;
+  name: string;
+  image: IFormFile;
+  status: Status;
+  description: string;
 }

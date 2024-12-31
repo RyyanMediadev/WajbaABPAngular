@@ -19,3 +19,18 @@ export interface CreateUpdateCouponDto {
 export interface GetCouponsInput extends PagedAndSortedResultRequestDto {
   filter?: string;
 }
+
+export interface UpdateCoupondto {
+  id: number;
+  name: string;
+  code: number;
+  discount: number;
+  discountType: DiscountType;
+  startDate?: string;
+  endDate?: string;
+  minimumOrderAmount: number;
+  maximumDiscount: number;
+  limitPerUser: number;
+  description?: string;
+  image: IFormFile;
+}

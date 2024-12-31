@@ -7,3 +7,9 @@ export interface CreateFaqs {
 
 export interface GetFaqInput extends PagedAndSortedResultRequestDto {
 }
+
+export interface UpadtefaqDto {
+  id: number;
+  question: string;
+  answer: string;
+}

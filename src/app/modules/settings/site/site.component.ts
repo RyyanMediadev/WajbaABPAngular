@@ -54,16 +54,16 @@ export class SiteComponent implements OnInit {
     this.siteService.getById().subscribe(
       (response) => {
         this.siteForm.patchValue({
-          name: response.data.name,
-          email: response.data.email,
-          phone: response.data.phone,
-          website: response.data.websiteURL,
-          city: response.data.city,
-          state: response.data.state,
-          countryCode: response.data.countryCode,
-          zipCode: response.data.zipCode,
-          address: response.data.address,
-          logoUrl: response.data.logoUrl
+          // name: response.data.name,
+          // email: response.data.email,
+          // phone: response.data.phone,
+          // website: response.data.websiteURL,
+          // city: response.data.city,
+          // state: response.data.state,
+          // countryCode: response.data.countryCode,
+          // zipCode: response.data.zipCode,
+          // address: response.data.address,
+          // logoUrl: response.data.logoUrl
         });
       },
       (error) => {
@@ -73,48 +73,48 @@ export class SiteComponent implements OnInit {
   }
 
   loadLanguages(): void {
-    this.languageService.getList().subscribe({
-      next: (languages) => {
-        console.log(languages)
-        this.languages = languages.map(lang => ({
-          value: lang.code,
-          viewValue: lang.name
-        }));
-      },
-      error: (error) => {
-        console.error('Error fetching languages:', error);
-      }
-    });
+    // this.languageService.getList().subscribe({
+    //   next: (languages) => {
+    //     console.log(languages)
+    //     this.languages = languages.map(lang => ({
+    //       value: lang.code,
+    //       viewValue: lang.name
+    //     }));
+    //   },
+    //   error: (error) => {
+    //     console.error('Error fetching languages:', error);
+    //   }
+    // });
   }
 
   loadBranches(): void {
-    this.branchService.getList().subscribe({
-      next: (branches) => {
-        console.log(branches)
-        this.branches = branches.map(branch => ({
-          value: branch.id,
-          viewValue: branch.name
-        }));
-      },
-      error: (error) => {
-        console.error('Error fetching branches:', error);
-      }
-    });
+    // this.branchService.getList().subscribe({
+    //   next: (branches) => {
+    //     console.log(branches)
+    //     this.branches = branches.map(branch => ({
+    //       value: branch.id,
+    //       viewValue: branch.name
+    //     }));
+    //   },
+    //   error: (error) => {
+    //     console.error('Error fetching branches:', error);
+    //   }
+    // });
   }
 
   loadCurrencies(): void {
-    this.currenciesService.getList().subscribe({
-      next: (currencies) => {
-        console.log(currencies)
-        this.currencies = currencies.map(currency => ({
-          value: currency.code,
-          viewValue: currency.name
-        }));
-      },
-      error: (error) => {
-        console.error('Error fetching currencies:', error);
-      }
-    });
+    // this.currenciesService.getList().subscribe({
+    //   next: (currencies) => {
+    //     console.log(currencies)
+    //     this.currencies = currencies.map(currency => ({
+    //       value: currency.code,
+    //       viewValue: currency.name
+    //     }));
+    //   },
+    //   error: (error) => {
+    //     console.error('Error fetching currencies:', error);
+    //   }
+    // });
   }
 
   onFileSelected(event: any) {

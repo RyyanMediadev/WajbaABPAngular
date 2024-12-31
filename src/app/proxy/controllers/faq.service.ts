@@ -1,6 +1,6 @@
 import { RestService, Rest } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateFaqs, GetFaqInput } from '../dtos/faqs-contract/models';
+import type { CreateFaqs, GetFaqInput, UpadtefaqDto } from '../dtos/faqs-contract/models';
 import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 
 @Injectable({
@@ -43,10 +43,11 @@ export class FaqService {
     { apiName: this.apiName,...config });
   
 
-  update = (id: number, input: CreateFaqs, config?: Partial<Rest.Config>) =>
+  update = (input: UpadtefaqDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
       method: 'PUT',
-      url: `/api/Faq/${id}`,
+      url: '/api/Faq',
+      body: input,
     },
     { apiName: this.apiName,...config });
 

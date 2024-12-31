@@ -1,54 +1,57 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
+import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateUpdateLanguageDto, LanguageDto } from '../dtos/languages/models';
+import type { CreateUpdateLanguageDto, UpdateLanguagedto } from '../dtos/languages/models';
+import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageService {
   apiName = 'Default';
+  
 
-
-  create = (input: CreateUpdateLanguageDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, LanguageDto>({
+  createasyncByLanguageDto = (languageDto: CreateUpdateLanguageDto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Language',
-      body: input.image,
+      params: { name: languageDto.name, code: languageDto.code, status: languageDto.status },
+      body: languageDto.image,
     },
     { apiName: this.apiName,...config });
-
+  
 
   delete = (id: number, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, void>({
+    this.restService.request<any, IActionResult>({
       method: 'DELETE',
       url: `/api/Language/${id}`,
     },
     { apiName: this.apiName,...config });
+  
 
-
-  get = (id: number, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, LanguageDto>({
-      method: 'GET',
-      url: `/api/Language/${id}`,
-    },
-    { apiName: this.apiName,...config });
-
-
-  getList = (input?: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, any>({
+  getAllByDto = (dto: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
       method: 'GET',
       url: '/api/Language',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      body: dto,
     },
     { apiName: this.apiName,...config });
+  
 
-
-  update = (id: number, input: CreateUpdateLanguageDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, LanguageDto>({
-      method: 'PUT',
+  getById = (id: number, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
+      method: 'GET',
       url: `/api/Language/${id}`,
-      body: input.image,
+    },
+    { apiName: this.apiName,...config });
+  
+
+  upadteByUpdate = (update: UpdateLanguagedto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, IActionResult>({
+      method: 'PUT',
+      url: '/api/Language',
+      params: { id: update.id, name: update.name, code: update.code, status: update.status },
+      body: update.image,
     },
     { apiName: this.apiName,...config });
 

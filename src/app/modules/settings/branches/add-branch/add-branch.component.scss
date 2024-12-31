@@ -9,10 +9,6 @@ button.close {
   @include close-button(var(--red-color));
 }
 
-.h5 {
-  font-size: 20px;
-}
-
 .text-danger,
 .invalid-feedback {
   color: var(--red-color) !important;

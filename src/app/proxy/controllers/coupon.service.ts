@@ -1,6 +1,6 @@
 import { RestService, Rest } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateUpdateCouponDto, GetCouponsInput } from '../dtos/coupon-contract/models';
+import type { CreateUpdateCouponDto, GetCouponsInput, UpdateCoupondto } from '../dtos/coupon-contract/models';
 import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 
 @Injectable({
@@ -44,10 +44,11 @@ export class CouponService {
     { apiName: this.apiName,...config });
   
 
-  update = (id: number, input: CreateUpdateCouponDto, config?: Partial<Rest.Config>) =>
+  update = (input: UpdateCoupondto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
       method: 'PUT',
-      url: `/api/Coupon/${id}`,
+      url: '/api/Coupon',
+      params: { id: input.id, name: input.name, code: input.code, discount: input.discount, discountType: input.discountType, startDate: input.startDate, endDate: input.endDate, minimumOrderAmount: input.minimumOrderAmount, maximumDiscount: input.maximumDiscount, limitPerUser: input.limitPerUser, description: input.description },
       body: input.image,
     },
     { apiName: this.apiName,...config });

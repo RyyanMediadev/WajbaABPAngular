@@ -7,9 +7,9 @@ import { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 import { IconsComponent } from "../../../../shared/icons/icons.component";
 import { AddBranchComponent } from '../add-branch/add-branch.component';
 import { SettingsSidebarComponent } from "../../settings-sidebar/settings-sidebar.component";
-import { CreateUpdateBranchDto } from '@proxy/dtos/branch-contract';
 import { Router } from '@angular/router';
 import { ConfirmDeleteModalComponent } from 'src/app/shared/confirm-delete-modal/confirm-delete-modal.component';
+import { UpdateBranchDto } from '@proxy/dtos/branch-contract';
 
 @Component({
   selector: 'app-branches',
@@ -19,7 +19,7 @@ import { ConfirmDeleteModalComponent } from 'src/app/shared/confirm-delete-modal
   styleUrls: ['./branches.component.scss'],
 })
 export class BranchesComponent implements OnInit {
-  branches: CreateUpdateBranchDto[] = [];
+  branches: UpdateBranchDto[] = [];
   isAddMode = true;
   selectedBranch: any = null;
   branchLabel: string = 'Branches';
@@ -55,7 +55,7 @@ export class BranchesComponent implements OnInit {
     });
   }
 
-  openAddEditModal(branch?: CreateUpdateBranchDto): void {
+  openAddEditModal(branch?: UpdateBranchDto): void {
     const modalRef = this.modalService.open(AddBranchComponent, {
       size: 'lg',
       centered: true,
@@ -115,7 +115,7 @@ export class BranchesComponent implements OnInit {
   }
 
 
-  openBranchDetailsAndNavigate(branch: CreateUpdateBranchDto) {
+  openBranchDetailsAndNavigate(branch: UpdateBranchDto) {
     this.router.navigate(['/settings/branches', branch.id]);
   }
 }

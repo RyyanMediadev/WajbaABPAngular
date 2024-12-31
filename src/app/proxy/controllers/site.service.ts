@@ -8,7 +8,7 @@ import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 })
 export class SiteService {
   apiName = 'Default';
-
+  
 
   create = (input: CreateSiteDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
@@ -16,7 +16,7 @@ export class SiteService {
       url: '/api/Site',
     },
     { apiName: this.apiName,...config });
-
+  
 
   delete = (id: number, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
@@ -24,20 +24,21 @@ export class SiteService {
       url: `/api/Site/${id}`,
     },
     { apiName: this.apiName,...config });
-
+  
 
   getById = (config?: Partial<Rest.Config>) =>
-    this.restService.request<any, any>({
+    this.restService.request<any, IActionResult>({
       method: 'GET',
       url: '/api/Site',
     },
     { apiName: this.apiName,...config });
-
+  
 
   update = (input: CreateSiteDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
       method: 'PUT',
       url: '/api/Site',
+      body: input,
     },
     { apiName: this.apiName,...config });
 

@@ -1,5 +1,4 @@
 import type { OTPType } from '../../enums/otptype.enum';
-import type { EntityDto } from '@abp/ng.core';
 
 export interface CreateUpdateOTPDto {
   type: OTPType;
@@ -7,7 +6,8 @@ export interface CreateUpdateOTPDto {
   expiryTimeInMinutes: number;
 }
 
-export interface OTPDto extends EntityDto<number> {
+export interface UpdateOtpDto {
+  id: number;
   type: OTPType;
   digitLimit: number;
   expiryTimeInMinutes: number;

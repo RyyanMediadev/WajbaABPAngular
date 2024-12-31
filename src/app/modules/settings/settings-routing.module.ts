@@ -5,6 +5,9 @@ import { SiteComponent } from './site/site.component';
 import { OrderSetupComponent } from './order-setup/order-setup.component';
 import { OTPComponent } from './otp/otp.component';
 import { NotificationComponent } from './notification/notification.component';
+import { ThemeComponent } from './theme/theme.component';
+import { TimeSlotsComponent } from './time-slots/time-slots.component';
+import { FAQsComponent } from './faqs/faqs.component';
 // import { BranchesComponent } from './branches/branches.component';
 
 const routes: Routes = [
@@ -21,10 +24,10 @@ const routes: Routes = [
   { path: 'notification', component: NotificationComponent },
   // { path: 'notificationAlert', component: NotificationAlertComponent },
   // { path: 'socialMedia', component: SocialMediaComponent },
-  // { path: 'aboutUs', component: FAQsComponent },
+  { path: 'faqs', component: FAQsComponent },
   // { path: 'analytics', component: AnalyticsComponent },
-  // { path: 'theme', component: ThemeComponent },
-  // { path: 'timeSlots', component: TimeSlotsComponent },
+  { path: 'theme', component: ThemeComponent },
+  { path: 'time-slots', component: TimeSlotsComponent },
   // { path: 'sliders', component: SlidersComponent },
   // { path: 'currencies', component: CurrenciesComponent },
   // { path: 'itemCategories', component: ItemCategoriesComponent },

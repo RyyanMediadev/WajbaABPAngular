@@ -1,12 +1,11 @@
 import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 
-export interface CreateUpdateBranchDto {
-  id?: number;
+export interface CreateBranchDto {
   name?: string;
   longitude: number;
   latitude: number;
-  email?: string;
-  phone?: string;
+  email: string;
+  phone: string;
   city?: string;
   state?: string;
   zipCode?: string;
@@ -16,4 +15,18 @@ export interface CreateUpdateBranchDto {
 
 export interface GetBranchInput extends PagedAndSortedResultRequestDto {
   filter?: string;
+}
+
+export interface UpdateBranchDto {
+  id: number;
+  name?: string;
+  longitude: number;
+  latitude: number;
+  email: string;
+  phone?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  address?: string;
+  status: number;
 }
