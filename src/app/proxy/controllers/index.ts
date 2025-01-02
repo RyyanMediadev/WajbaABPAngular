@@ -15,3 +15,4 @@ export * from './otp.service';
 export * from './site.service';
 export * from './theme.service';
 export * from './time-slot.service';
+export * from './user.service';

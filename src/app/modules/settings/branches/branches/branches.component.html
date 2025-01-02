@@ -4,7 +4,7 @@
   <section class="d-flex justify-content-center w-100 h-100 flex-grow-1">
     <div class="table-responsive w-100">
       <div class="d-flex justify-content-between align-items-center w-100 rounded-top bg-white px-4 py-3 border-bottom">
-        <span class="section-title text-black">{{ branchLabel }}</span>
+        <span class="section-title text-black">Branches</span>
 
         <div class="d-flex justify-content-center align-items-center gap-3">
           <button (click)="openAddEditModal()"
@@ -16,55 +16,7 @@
       </div>
 
       <!-- Branches Table -->
-      <table class="table table-striped bg-white">
-        <thead>
-          <tr>
-            <th class="px-3 py-3 fw-bold">Name</th>
-            <th class="px-3 py-3 fw-bold">Status</th>
-            <th class="px-3 py-3 fw-bold">Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let branch of branches; let isOdd = odd" [class.table-secondary]="!isOdd">
-            <td class="px-3 py-2">{{ branch.name }}</td>
-            <td class="px-3 py-2" [ngClass]="{'text-success': branch.status === 1, 'text-danger': branch.status === 0}">
-              {{ branch.status === 1 ? 'Active' :'Inactive' }}
-            </td>
-            <td class="px-3 py-2 d-flex align-items-center gap-3">
-              <!-- Edit Button -->
-              <div class="position-relative">
-                <span class="tooltip-text position-absolute start-50 translate-middle badge bg-black rounded-0 p-1">
-                  Edit
-                </span>
-                <button (click)="openAddEditModal(branch)" class="btn p-1 rounded-1 border-0">
-                  <img src="assets/images/edit.svg" alt="edit">
-                </button>
-              </div>
-
-              <!-- View Button with Tooltip -->
-              <div class="position-relative">
-                <span class="tooltip-text position-absolute start-50 translate-middle badge bg-black rounded-0 p-1">
-                  View
-                </span>
-                <button (click)="openBranchDetailsAndNavigate(branch)" class="btn p-1 rounded-1 border-0">
-                  <img src="assets/images/view.svg" alt="view">
-                </button>
-              </div>
-
-              <!-- Delete Button -->
-              <div class="position-relative">
-                <span class="tooltip-text position-absolute start-50 translate-middle badge bg-black rounded-0 p-1">
-                  Delete
-                </span>
-                <button (click)="openConfirmDeleteModal(branch.id)" class="btn p-1 rounded-1 border-0">
-                  <img src="assets/images/delete.svg" alt="delete">
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <app-table [data]="branches" [columns]="columns" [actions]="actions"></app-table>
     </div>
   </section>
 </div>

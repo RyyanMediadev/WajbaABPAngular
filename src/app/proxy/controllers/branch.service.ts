@@ -14,6 +14,7 @@ export class BranchService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Branch',
+      body: input,
     },
     { apiName: this.apiName,...config });
   

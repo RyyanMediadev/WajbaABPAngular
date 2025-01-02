@@ -5,13 +5,15 @@ import { OrderSetupService } from '@proxy/controllers';
 import { SettingsSidebarComponent } from "../settings-sidebar/settings-sidebar.component";
 import { TimeSlotsModalComponent } from 'src/app/shared/time-slots-modal/time-slots-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CreateUpdateOrderSetupDto } from '@proxy/dtos/order-setup-contract';
+import { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 
 @Component({
   selector: 'app-order-setup',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, SettingsSidebarComponent],
   templateUrl: './order-setup.component.html',
-  styleUrl: './order-setup.component.scss'
+  styleUrls: ['./order-setup.component.scss']
 })
 export class OrderSetupComponent implements OnInit {
   orderForm: FormGroup;
@@ -25,13 +27,12 @@ export class OrderSetupComponent implements OnInit {
     private fb: FormBuilder,
     private orderSetupService: OrderSetupService,
     private modalService: NgbModal
-
   ) {
     this.orderForm = this.fb.group({
       foodPreparationTime: [null, [Validators.required]],
-      orderSlotDuration: [null, [Validators.required]],
-      takeaway: [true, [Validators.required]],
-      delivery: [true, [Validators.required]],
+      scheduleOrderSlotDuration: [null, [Validators.required]],
+      isTakeawayEnabled: [true, [Validators.required]],
+      isDeliveryEnabled: [true, [Validators.required]],
       freeDeliveryKilometer: [null, [Validators.required]],
       basicDeliveryCharge: [null, [Validators.required]],
       chargePerKilo: [null, [Validators.required]],
@@ -71,10 +72,6 @@ export class OrderSetupComponent implements OnInit {
   onSaveTimeSlot(timeSlotData: { openingTime: string; closingTime: string; weekDayId: number }, field: string): void {
     const timeSlotString = `${timeSlotData.openingTime} - ${timeSlotData.closingTime}`;
     this.orderForm.patchValue({
-      // [field]: {
-      //   openingTime: timeSlotData.openingTime,
-      //   closingTime: timeSlotData.closingTime
-      // },
       [field]: timeSlotString // Update only the specific field
     });
   }
@@ -97,23 +94,44 @@ export class OrderSetupComponent implements OnInit {
 
   onSubmit(): void {
     if (this.orderForm.valid) {
-      const orderSetup = {
-        foodPreparationTime: this.orderForm.value.foodPreparationTime,
-        scheduleOrderSlotDuration: this.orderForm.value.orderSlotDuration,
-        isTakeawayEnabled: this.orderForm.value.takeaway,
-        isDeliveryEnabled: this.orderForm.value.delivery,
-        freeDeliveryKilometer: this.orderForm.value.freeDeliveryKilometer,
-        basicDeliveryCharge: this.orderForm.value.basicDeliveryCharge,
-        chargePerKilo: this.orderForm.value.chargePerKilo
-      };
+      let formValue = this.orderForm.value as CreateUpdateOrderSetupDto;
 
-      // Call service to save order setup (uncomment once service is implemented)
-      // this.orderSetupService.updateOrderSetup(orderSetup).subscribe(...);
+      // Call the update method from the service
+      this.orderSetupService.update(1, formValue).subscribe(response => {
+        console.log('Order setup updated successfully', response);
+      }, error => {
+        console.error('Error updating order setup', error);
+      });
     }
   }
 
   fetchOrderSetup(): void {
-    // Logic for fetching initial order setup if needed
+    const defaultInput: PagedAndSortedResultRequestDto = {
+      sorting: '',
+      skipCount: 0,
+      maxResultCount: 10
+    };
+
+    // Fetch the order setup data
+    this.orderSetupService.getList(defaultInput).subscribe(
+      (response: any) => {
+        this.orderForm.patchValue({
+          foodPreparationTime: response.data.foodPreparationTime,
+          scheduleOrderSlotDuration: response.data.scheduleOrderSlotDuration,
+          isTakeawayEnabled: response.data.isTakeawayEnabled,
+          isDeliveryEnabled: response.data.isDeliveryEnabled,
+          freeDeliveryKilometer: response.data.freeDeliveryKilometer,
+          basicDeliveryCharge: response.data.basicDeliveryCharge,
+          chargePerKilo: response.data.chargePerKilo,
+          onTime: response.data.onTime,
+          warning: response.data.warning,
+          delayTime: response.data.delayTime,
+        });
+      },
+      (error) => {
+        console.error('Error fetching order setup data', error);
+      }
+    );
   }
 
   getWeekDayId(field: string): number {

@@ -1,7 +1,6 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateUpdateLanguageDto, UpdateLanguagedto } from '../dtos/languages/models';
+import type { CreateUpdateLanguageDto, GetLanguageInput, UpdateLanguagedto } from '../dtos/languages/models';
 import type { IActionResult } from '../microsoft/asp-net-core/mvc/models';
 
 @Injectable({
@@ -29,7 +28,7 @@ export class LanguageService {
     { apiName: this.apiName,...config });
   
 
-  getAllByDto = (dto: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+  getAllByDto = (dto: GetLanguageInput, config?: Partial<Rest.Config>) =>
     this.restService.request<any, IActionResult>({
       method: 'GET',
       url: '/api/Language',

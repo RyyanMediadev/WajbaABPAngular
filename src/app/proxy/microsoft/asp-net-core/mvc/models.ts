@@ -1,4 +1,4 @@
 
 export interface IActionResult {
-    data?: any;
+  data?: any;
 }

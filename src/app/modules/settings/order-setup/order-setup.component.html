@@ -35,11 +35,11 @@
               <label for="takeaway" class="form-label">Takeaway</label>
               <div class="d-flex align-items-center gap-2">
                 <label class="btn radio-label">
-                  <input type="radio" id="enableTakeaway" formControlName="takeaway" [value]="true" class="d-none">
+                  <input type="radio" id="enableTakeaway" formControlName="isTakeawayEnabled" [value]="true" class="d-none">
                   Left
                 </label>
                 <label class="btn radio-label">
-                  <input type="radio" id="disableTakeaway" formControlName="takeaway" [value]="false" class="d-none">
+                  <input type="radio" id="disableTakeaway" formControlName="isTakeawayEnabled" [value]="false" class="d-none">
                   Right
                 </label>
               </div>
@@ -56,14 +56,14 @@
           <!-- Schedule Order Slot Duration -->
           <div class="w-50">
             <div class="mb-4">
-              <label for="orderSlotDuration" class="form-label">Schedule Order Slot Duration <span
+              <label for="scheduleOrderSlotDuration" class="form-label">Schedule Order Slot Duration <span
                   class="text-danger">(In Minutes)*</span></label>
-              <input type="number" id="orderSlotDuration" formControlName="orderSlotDuration"
+              <input type="number" id="scheduleOrderSlotDuration" formControlName="scheduleOrderSlotDuration"
                 class="form-control bg-white" required />
               <div
-                *ngIf="orderForm.get('orderSlotDuration')?.invalid && (orderForm.get('orderSlotDuration')?.touched || orderForm.get('orderSlotDuration')?.dirty)"
+                *ngIf="orderForm.get('scheduleOrderSlotDuration')?.invalid && (orderForm.get('scheduleOrderSlotDuration')?.touched || orderForm.get('scheduleOrderSlotDuration')?.dirty)"
                 class="text-danger">
-                <small *ngIf="orderForm.get('orderSlotDuration')?.errors?.['required']">
+                <small *ngIf="orderForm.get('scheduleOrderSlotDuration')?.errors?.['required']">
                   Schedule Order Slot Duration is required.
                 </small>
               </div>
@@ -74,11 +74,11 @@
               <label for="delivery" class="form-label">Delivery</label>
               <div class="d-flex align-items-center gap-2">
                 <label class="btn radio-label">
-                  <input type="radio" id="enableDelivery" formControlName="delivery" [value]="true" class="d-none">
+                  <input type="radio" id="enableDelivery" formControlName="isDeliveryEnabled" [value]="true" class="d-none">
                   Enable
                 </label>
                 <label class="btn radio-label">
-                  <input type="radio" id="disableDelivery" formControlName="delivery" [value]="false" class="d-none">
+                  <input type="radio" id="disableDelivery" formControlName="isDeliveryEnabled" [value]="false" class="d-none">
                   Disable
                 </label>
               </div>

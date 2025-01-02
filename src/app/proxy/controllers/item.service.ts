@@ -14,6 +14,7 @@ export class ItemService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Item',
+      params: { name: input.name, price: input.price, isFeatured: input.isFeatured, status: input.status, itemType: input.itemType, note: input.note, description: input.description, taxValue: input.taxValue, categoryId: input.categoryId, branchIds: input.branchIds },
       body: input.imageUrl,
     },
     { apiName: this.apiName,...config });
@@ -48,6 +49,7 @@ export class ItemService {
     this.restService.request<any, IActionResult>({
       method: 'PUT',
       url: `/api/Item/${id}`,
+      params: { name: input.name, price: input.price, isFeatured: input.isFeatured, status: input.status, itemType: input.itemType, note: input.note, description: input.description, taxValue: input.taxValue, categoryId: input.categoryId, branchIds: input.branchIds },
       body: input.imageUrl,
     },
     { apiName: this.apiName,...config });

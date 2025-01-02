@@ -34,7 +34,6 @@ export class CompanyComponent implements OnInit {
       countryCode: ['', Validators.required],
       zipCode: ['', Validators.required],
       address: ['', Validators.required],
-      logoUrl: [''],
     });
   }
 

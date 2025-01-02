@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BranchService, CurrenciesService, LanguageService, SiteService } from '@proxy/controllers';
 import { SettingsSidebarComponent } from "../settings-sidebar/settings-sidebar.component";
+import { GetBranchInput } from '@proxy/dtos/branch-contract';
+import { PagedAndSortedResultRequestDto } from '@abp/ng.core';
+import { CreateSiteDto } from '@proxy/dtos/sites-contact';
 
 @Component({
   selector: 'app-site',
@@ -32,14 +35,14 @@ export class SiteComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       defaultLanguage: ['', Validators.required],
       defaultBranch: ['', Validators.required],
-      androidAppLink: ['', Validators.required],
-      iosAppLink: ['', Validators.required],
+      androidAPPLink: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      iosappLink: ['', [Validators.required, Validators.pattern('https?://.+')]],
       copyrights: ['', Validators.required],
       googleMapKey: ['', Validators.required],
-      digitAfterDecimal: ['', [Validators.min(0), Validators.max(10), Validators.required]],
+      digitAfterDecimal: ['', [Validators.min(0), Validators.required]],
       defaultCurrency: ['', Validators.required],
-      currencyPosition: ['left', Validators.required],
-      languageSwitch: ['enable', Validators.required],
+      currencyPosition: [1, Validators.required],
+      languageSwitch: [1, Validators.required],
     });
   }
 
@@ -53,17 +56,20 @@ export class SiteComponent implements OnInit {
   getCompany(): void {
     this.siteService.getById().subscribe(
       (response) => {
+        console.log(response);
         this.siteForm.patchValue({
-          // name: response.data.name,
-          // email: response.data.email,
-          // phone: response.data.phone,
-          // website: response.data.websiteURL,
-          // city: response.data.city,
-          // state: response.data.state,
-          // countryCode: response.data.countryCode,
-          // zipCode: response.data.zipCode,
-          // address: response.data.address,
-          // logoUrl: response.data.logoUrl
+          name: response.data.name,
+          email: response.data.email,
+          iosappLink: response.data.iosappLink, // Ensure correct casing
+          androidAPPLink: response.data.androidAPPLink, // Ensure correct casing
+          copyrights: response.data.copyrights,
+          googleMapKey: response.data.googleMapKey,
+          digitAfterDecimal: response.data.quantity,
+          currencyPosition: response.data.currencyPosition,
+          languageSwitch: response.data.languageSwitch,
+          defaultBranch: response.data.branchId,
+          defaultCurrency: response.data.currencyId,
+          defaultLanguage: response.data.languageId,
         });
       },
       (error) => {
@@ -73,84 +79,75 @@ export class SiteComponent implements OnInit {
   }
 
   loadLanguages(): void {
-    // this.languageService.getList().subscribe({
-    //   next: (languages) => {
-    //     console.log(languages)
-    //     this.languages = languages.map(lang => ({
-    //       value: lang.code,
-    //       viewValue: lang.name
-    //     }));
-    //   },
-    //   error: (error) => {
-    //     console.error('Error fetching languages:', error);
-    //   }
-    // });
+    this.languageService.getAllByDto(null).subscribe({
+      next: (languages) => {
+        console.log(languages)
+        this.languages = languages.data.items.map(lang => ({
+          value: lang.id,
+          viewValue: lang.name
+        }));
+      },
+      error: (error) => {
+        console.error('Error fetching languages:', error);
+      }
+    });
   }
 
   loadBranches(): void {
-    // this.branchService.getList().subscribe({
-    //   next: (branches) => {
-    //     console.log(branches)
-    //     this.branches = branches.map(branch => ({
-    //       value: branch.id,
-    //       viewValue: branch.name
-    //     }));
-    //   },
-    //   error: (error) => {
-    //     console.error('Error fetching branches:', error);
-    //   }
-    // });
+    const defaultInput: GetBranchInput = {
+      filter: '',
+      sorting: '',
+      skipCount: 0,
+      maxResultCount: 10
+    };
+
+    this.branchService.getList(defaultInput).subscribe({
+      next: (branches) => {
+        console.log(branches);
+        this.branches = branches.data.items.map(branch => ({
+          value: branch.id,
+          viewValue: branch.name
+        }));
+      },
+      error: (error) => {
+        console.error('Error fetching branches:', error);
+      }
+    });
   }
 
   loadCurrencies(): void {
-    // this.currenciesService.getList().subscribe({
-    //   next: (currencies) => {
-    //     console.log(currencies)
-    //     this.currencies = currencies.map(currency => ({
-    //       value: currency.code,
-    //       viewValue: currency.name
-    //     }));
-    //   },
-    //   error: (error) => {
-    //     console.error('Error fetching currencies:', error);
-    //   }
-    // });
-  }
+    const defaultInput: PagedAndSortedResultRequestDto = {
+      sorting: '',
+      skipCount: 0,
+      maxResultCount: 10
+    };
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.logoFile = file;
-    }
+    this.currenciesService.getList(defaultInput).subscribe({
+      next: (currencies) => {
+        console.log(currencies);
+        this.currencies = currencies.data.items.map(currency => ({
+          value: currency.id,
+          viewValue: currency.name
+        }));
+      },
+      error: (error) => {
+        console.error('Error fetching currencies:', error);
+      }
+    });
   }
 
   submitForm() {
     if (this.siteForm.valid) {
-      const formData = new FormData();
-      formData.append('Name', this.siteForm.get('name')?.value);
-      formData.append('Email', this.siteForm.get('email')?.value);
-      formData.append('Phone', this.siteForm.get('phone')?.value);
-      formData.append('WebsiteURL', this.siteForm.get('website')?.value);
-      formData.append('City', this.siteForm.get('city')?.value);
-      formData.append('State', this.siteForm.get('state')?.value);
-      formData.append('CountryCode', this.siteForm.get('countryCode')?.value);
-      formData.append('ZipCode', this.siteForm.get('zipCode')?.value);
-      formData.append('Address', this.siteForm.get('address')?.value);
-
-      if (this.logoFile) {
-        formData.append('LogoUrl', this.logoFile);
-      }
-
-      // Call the service method to submit the data
-      // this.siteService.update(this.company.id, formData).subscribe({
-      //   next: (response) => {
-      //     console.log('Form submitted successfully!', response);
-      //     this.siteForm.reset();
-      //   },
-      //   error: (error) => {
-      //     console.error('Form submission error:', error);
-      //   }
-      // });
+      const formValue = this.siteForm.value as CreateSiteDto;
+      console.log(formValue);
+      this.siteService.update(formValue).subscribe({
+        next: (response) => {
+          console.log('Form submitted successfully!', response);
+        },
+        error: (error) => {
+          console.error('Form submission error:', error);
+        }
+      });
     } else {
       this.siteForm.markAllAsTouched();
     }

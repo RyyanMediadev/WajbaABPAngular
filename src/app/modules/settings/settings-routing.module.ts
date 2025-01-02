@@ -8,7 +8,6 @@ import { NotificationComponent } from './notification/notification.component';
 import { ThemeComponent } from './theme/theme.component';
 import { TimeSlotsComponent } from './time-slots/time-slots.component';
 import { FAQsComponent } from './faqs/faqs.component';
-// import { BranchesComponent } from './branches/branches.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'company', pathMatch: 'full' },
@@ -29,9 +28,18 @@ const routes: Routes = [
   { path: 'theme', component: ThemeComponent },
   { path: 'time-slots', component: TimeSlotsComponent },
   // { path: 'sliders', component: SlidersComponent },
-  // { path: 'currencies', component: CurrenciesComponent },
-  // { path: 'itemCategories', component: ItemCategoriesComponent },
-  // { path: 'itemAttributes', component: ItemAttributesComponent },
+  {
+    path: 'currencies',
+    loadChildren: () => import('./currencies/currencies.module').then(m => m.CurrenciesModule),
+  },
+  {
+    path: 'item-categories',
+    loadChildren: () => import('./item-categories/item-categories.module').then(m => m.ItemCategoriesModule),
+  },
+  {
+    path: 'item-attributes',
+    loadChildren: () => import('./item-attributes/item-attributes.module').then(m => m.ItemAttributesModule),
+  },
   // { path: 'taxes', component: TaxesComponent },
   // { path: 'pages', component: PagesComponent },
   // { path: 'role', component: RoleComponent },

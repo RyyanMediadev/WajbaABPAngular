@@ -901,123 +901,15 @@
               "parameters": [
                 {
                   "nameOnMethod": "input",
-                  "name": "Name",
+                  "name": "input",
                   "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
+                  "type": "Wajba.Dtos.BranchContract.CreateBranchDto",
+                  "typeSimple": "Wajba.Dtos.BranchContract.CreateBranchDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Longitude",
-                  "jsonName": null,
-                  "type": "System.Double",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Latitude",
-                  "jsonName": null,
-                  "type": "System.Double",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Email",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Phone",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "City",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "State",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "ZipCode",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Address",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Status",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -1248,7 +1140,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -1272,7 +1164,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -1284,7 +1176,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 }
               ],
@@ -1448,6 +1340,18 @@
                 },
                 {
                   "nameOnMethod": "input",
+                  "name": "BranchId",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Query",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
                   "name": "Sorting",
                   "jsonName": null,
                   "type": "System.String",
@@ -1594,111 +1498,15 @@
               "parameters": [
                 {
                   "nameOnMethod": "input",
-                  "name": "Name",
+                  "name": "input",
                   "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
+                  "type": "Wajba.Dtos.CompanyContact.CreateUpdateComanyDto",
+                  "typeSimple": "Wajba.Dtos.CompanyContact.CreateUpdateComanyDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Email",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Phone",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "WebsiteURL",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "City",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "State",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "CountryCode",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "ZipCode",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Address",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -1727,111 +1535,15 @@
               "parameters": [
                 {
                   "nameOnMethod": "input",
-                  "name": "Name",
+                  "name": "input",
                   "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
+                  "type": "Wajba.Dtos.CompanyContact.CreateUpdateComanyDto",
+                  "typeSimple": "Wajba.Dtos.CompanyContact.CreateUpdateComanyDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Email",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Phone",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "WebsiteURL",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "City",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "State",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "CountryCode",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "ZipCode",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Address",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -1930,7 +1642,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -1942,7 +1654,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -1954,7 +1666,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -1966,7 +1678,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -1978,7 +1690,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -1990,7 +1702,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -2002,7 +1714,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -2014,7 +1726,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -2026,7 +1738,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -2038,7 +1750,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -2627,51 +2339,15 @@
               "parameters": [
                 {
                   "nameOnMethod": "input",
-                  "name": "Name",
+                  "name": "input",
                   "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
+                  "type": "Wajba.Dtos.DineInTableContract.CreateDineIntable",
+                  "typeSimple": "Wajba.Dtos.DineInTableContract.CreateDineIntable",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Size",
-                  "jsonName": null,
-                  "type": "System.Byte",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "IsActive",
-                  "jsonName": null,
-                  "type": "System.Boolean",
-                  "typeSimple": "boolean",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "BranchId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -2720,51 +2396,15 @@
                 },
                 {
                   "nameOnMethod": "input",
-                  "name": "Name",
+                  "name": "input",
                   "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
+                  "type": "Wajba.Dtos.DineInTableContract.CreateDineIntable",
+                  "typeSimple": "Wajba.Dtos.DineInTableContract.CreateDineIntable",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Size",
-                  "jsonName": null,
-                  "type": "System.Byte",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "IsActive",
-                  "jsonName": null,
-                  "type": "System.Boolean",
-                  "typeSimple": "boolean",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "BranchId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -2975,27 +2615,15 @@
               "parameters": [
                 {
                   "nameOnMethod": "input",
-                  "name": "Question",
+                  "name": "input",
                   "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
+                  "type": "Wajba.Dtos.FaqsContract.CreateFaqs",
+                  "typeSimple": "Wajba.Dtos.FaqsContract.CreateFaqs",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Answer",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -3454,7 +3082,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3478,7 +3106,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3490,7 +3118,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3502,7 +3130,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3514,7 +3142,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3526,7 +3154,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3538,7 +3166,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3550,7 +3178,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3562,7 +3190,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3574,7 +3202,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 }
               ],
@@ -3631,7 +3259,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3655,7 +3283,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3667,7 +3295,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3679,7 +3307,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3691,7 +3319,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3703,7 +3331,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3715,7 +3343,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3727,7 +3355,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3739,7 +3367,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 },
                 {
@@ -3751,7 +3379,7 @@
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
+                  "bindingSourceId": "ModelBinding",
                   "descriptorName": "input"
                 }
               ],
@@ -4301,9 +3929,9 @@
               "parametersOnMethod": [
                 {
                   "name": "dto",
-                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "typeAsString": "Wajba.Dtos.Languages.GetLanguageInput, Wajba.Application.Contracts",
+                  "type": "Wajba.Dtos.Languages.GetLanguageInput",
+                  "typeSimple": "Wajba.Dtos.Languages.GetLanguageInput",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -4313,8 +3941,8 @@
                   "nameOnMethod": "dto",
                   "name": "dto",
                   "jsonName": null,
-                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "type": "Wajba.Dtos.Languages.GetLanguageInput",
+                  "typeSimple": "Wajba.Dtos.Languages.GetLanguageInput",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -5471,147 +5099,15 @@
               "parameters": [
                 {
                   "nameOnMethod": "input",
-                  "name": "Name",
+                  "name": "input",
                   "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
+                  "type": "Wajba.Dtos.SitesContact.CreateSiteDto",
+                  "typeSimple": "Wajba.Dtos.SitesContact.CreateSiteDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Email",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "IOSAPPLink",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "AndroidAPPLink",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Copyrights",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "GoogleMapKey",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "Quantity",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "CurrencyPosition",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "LanguageSwitch",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "BranchId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "CurrencyId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "LanguageId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Form",
-                  "descriptorName": "input"
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -5721,37 +5217,41 @@
           "type": "Wajba.Controllers.ThemeController",
           "interfaces": [],
           "actions": {
-            "CreateAsyncByInput": {
-              "uniqueName": "CreateAsyncByInput",
+            "CreateAsyncByBrowserTabIconUrlAndFooterLogoUrlAndLogoUrl": {
+              "uniqueName": "CreateAsyncByBrowserTabIconUrlAndFooterLogoUrlAndLogoUrl",
               "name": "CreateAsync",
               "httpMethod": "POST",
               "url": "api/Theme",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
-                  "name": "input",
-                  "typeAsString": "Wajba.Dtos.ThemesContract.CreateThemesDto, Wajba.Application.Contracts",
-                  "type": "Wajba.Dtos.ThemesContract.CreateThemesDto",
-                  "typeSimple": "Wajba.Dtos.ThemesContract.CreateThemesDto",
+                  "name": "BrowserTabIconUrl",
+                  "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "FooterLogoUrl",
+                  "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "LogoUrl",
+                  "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
                   "isOptional": false,
                   "defaultValue": null
                 }
               ],
               "parameters": [
                 {
-                  "nameOnMethod": "input",
-                  "name": "LogoUrl",
-                  "jsonName": null,
-                  "type": "Microsoft.AspNetCore.Http.IFormFile",
-                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "FormFile",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
+                  "nameOnMethod": "BrowserTabIconUrl",
                   "name": "BrowserTabIconUrl",
                   "jsonName": null,
                   "type": "Microsoft.AspNetCore.Http.IFormFile",
@@ -5760,10 +5260,10 @@
                   "defaultValue": null,
                   "constraintTypes": null,
                   "bindingSourceId": "FormFile",
-                  "descriptorName": "input"
+                  "descriptorName": ""
                 },
                 {
-                  "nameOnMethod": "input",
+                  "nameOnMethod": "FooterLogoUrl",
                   "name": "FooterLogoUrl",
                   "jsonName": null,
                   "type": "Microsoft.AspNetCore.Http.IFormFile",
@@ -5772,7 +5272,19 @@
                   "defaultValue": null,
                   "constraintTypes": null,
                   "bindingSourceId": "FormFile",
-                  "descriptorName": "input"
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "LogoUrl",
+                  "name": "LogoUrl",
+                  "jsonName": null,
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "FormFile",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -5782,8 +5294,8 @@
               "allowAnonymous": null,
               "implementFrom": "Wajba.Controllers.ThemeController"
             },
-            "UpdateAsyncByIdAndInput": {
-              "uniqueName": "UpdateAsyncByIdAndInput",
+            "UpdateAsyncByIdAndBrowserTabIconUrlAndFooterLogoUrlAndLogoUrl": {
+              "uniqueName": "UpdateAsyncByIdAndBrowserTabIconUrlAndFooterLogoUrlAndLogoUrl",
               "name": "UpdateAsync",
               "httpMethod": "PUT",
               "url": "api/Theme/{id}",
@@ -5798,10 +5310,26 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "input",
-                  "typeAsString": "Wajba.Dtos.ThemesContract.CreateThemesDto, Wajba.Application.Contracts",
-                  "type": "Wajba.Dtos.ThemesContract.CreateThemesDto",
-                  "typeSimple": "Wajba.Dtos.ThemesContract.CreateThemesDto",
+                  "name": "BrowserTabIconUrl",
+                  "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "FooterLogoUrl",
+                  "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "LogoUrl",
+                  "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -5820,19 +5348,7 @@
                   "descriptorName": ""
                 },
                 {
-                  "nameOnMethod": "input",
-                  "name": "LogoUrl",
-                  "jsonName": null,
-                  "type": "Microsoft.AspNetCore.Http.IFormFile",
-                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "FormFile",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
+                  "nameOnMethod": "BrowserTabIconUrl",
                   "name": "BrowserTabIconUrl",
                   "jsonName": null,
                   "type": "Microsoft.AspNetCore.Http.IFormFile",
@@ -5841,10 +5357,10 @@
                   "defaultValue": null,
                   "constraintTypes": null,
                   "bindingSourceId": "FormFile",
-                  "descriptorName": "input"
+                  "descriptorName": ""
                 },
                 {
-                  "nameOnMethod": "input",
+                  "nameOnMethod": "FooterLogoUrl",
                   "name": "FooterLogoUrl",
                   "jsonName": null,
                   "type": "Microsoft.AspNetCore.Http.IFormFile",
@@ -5853,7 +5369,19 @@
                   "defaultValue": null,
                   "constraintTypes": null,
                   "bindingSourceId": "FormFile",
-                  "descriptorName": "input"
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "LogoUrl",
+                  "name": "LogoUrl",
+                  "jsonName": null,
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "FormFile",
+                  "descriptorName": ""
                 }
               ],
               "returnValue": {
@@ -6021,6 +5549,21 @@
           "type": "Wajba.Controllers.TimeSlotController",
           "interfaces": [],
           "actions": {
+            "SeedData": {
+              "uniqueName": "SeedData",
+              "name": "SeedData",
+              "httpMethod": "POST",
+              "url": "api/TimeSlot/seed",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "Microsoft.AspNetCore.Mvc.IActionResult",
+                "typeSimple": "Microsoft.AspNetCore.Mvc.IActionResult"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Wajba.Controllers.TimeSlotController"
+            },
             "GetAll": {
               "uniqueName": "GetAll",
               "name": "GetAll",
@@ -6072,6 +5615,54 @@
               },
               "allowAnonymous": null,
               "implementFrom": "Wajba.Controllers.TimeSlotController"
+            }
+          }
+        },
+        "Wajba.Controllers.UserController": {
+          "controllerName": "User",
+          "controllerGroupName": null,
+          "isRemoteService": false,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "Wajba.Controllers.UserController",
+          "interfaces": [],
+          "actions": {
+            "LogInByLogInDto": {
+              "uniqueName": "LogInByLogInDto",
+              "name": "LogIn",
+              "httpMethod": "POST",
+              "url": "api/User/LogIn",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "LogInDto",
+                  "typeAsString": "Wajba.Dtos.UserDTO.LogInDto, Wajba.Application.Contracts",
+                  "type": "Wajba.Dtos.UserDTO.LogInDto",
+                  "typeSimple": "Wajba.Dtos.UserDTO.LogInDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "LogInDto",
+                  "name": "LogInDto",
+                  "jsonName": null,
+                  "type": "Wajba.Dtos.UserDTO.LogInDto",
+                  "typeSimple": "Wajba.Dtos.UserDTO.LogInDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Microsoft.AspNetCore.Mvc.IActionResult",
+                "typeSimple": "Microsoft.AspNetCore.Mvc.IActionResult"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Wajba.Controllers.UserController"
             }
           }
         }
@@ -14721,7 +14312,7 @@
           "jsonName": null,
           "type": "Microsoft.AspNetCore.Http.IFormFile",
           "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
-          "isRequired": true,
+          "isRequired": false,
           "minLength": null,
           "maxLength": null,
           "minimum": null,
@@ -14766,6 +14357,18 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "BranchId",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -16145,6 +15748,14 @@
         }
       ]
     },
+    "Wajba.Dtos.Languages.GetLanguageInput": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": []
+    },
     "Wajba.Dtos.Languages.UpdateLanguagedto": {
       "baseType": null,
       "isEnum": false,
@@ -16583,51 +16194,6 @@
         }
       ]
     },
-    "Wajba.Dtos.ThemesContract.CreateThemesDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "LogoUrl",
-          "jsonName": null,
-          "type": "Microsoft.AspNetCore.Http.IFormFile",
-          "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "BrowserTabIconUrl",
-          "jsonName": null,
-          "type": "Microsoft.AspNetCore.Http.IFormFile",
-          "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "FooterLogoUrl",
-          "jsonName": null,
-          "type": "Microsoft.AspNetCore.Http.IFormFile",
-          "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
     "Wajba.Dtos.ThemesContract.GetThemeInput": {
       "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
       "isEnum": false,
@@ -16718,6 +16284,39 @@
           "jsonName": null,
           "type": "[Wajba.Dtos.TimeSlotsContract.TimeSlotUpdateDetailDto]",
           "typeSimple": "[Wajba.Dtos.TimeSlotsContract.TimeSlotUpdateDetailDto]",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Wajba.Dtos.UserDTO.LogInDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Phone",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Password",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,

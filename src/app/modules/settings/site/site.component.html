@@ -62,22 +62,32 @@
         <!-- Row 3 -->
         <div class="d-flex align-items-center gap-4 justify-content-between flex-wrap flex-md-nowrap">
           <div class="form-group w-100 w-md-50 mb-2">
-            <label for="androidAppLink" class="form-label">Android App Link</label>
-            <input id="androidAppLink" type="text" class="form-control bg-white" formControlName="androidAppLink"
-              [class.is-invalid]="siteForm.get('androidAppLink')?.invalid && siteForm.get('androidAppLink')?.touched" />
-            <div *ngIf="siteForm.get('androidAppLink')?.invalid && siteForm.get('androidAppLink')?.touched"
+            <label for="androidAPPLink" class="form-label">Android App Link</label>
+            <input id="androidAPPLink" type="text" class="form-control bg-white" formControlName="androidAPPLink"
+              [class.is-invalid]="siteForm.get('androidAPPLink')?.invalid && siteForm.get('androidAPPLink')?.touched" />
+            <div *ngIf="siteForm.get('androidAPPLink')?.invalid && siteForm.get('androidAPPLink')?.touched"
               class="invalid-feedback">
-              Android App Link is required.
+              <div *ngIf="siteForm.get('androidAPPLink')?.errors?.['required']">
+                Android App Link is required.
+              </div>
+              <div *ngIf="siteForm.get('androidAPPLink')?.errors?.['pattern']">
+                Android App Link must be a valid URL starting with http:// or https://.
+              </div>
             </div>
           </div>
 
           <div class="form-group w-100 w-md-50 mb-2">
-            <label for="iosAppLink" class="form-label">iOS App Link</label>
-            <input id="iosAppLink" type="text" class="form-control bg-white" formControlName="iosAppLink"
-              [class.is-invalid]="siteForm.get('iosAppLink')?.invalid && siteForm.get('iosAppLink')?.touched" />
-            <div *ngIf="siteForm.get('iosAppLink')?.invalid && siteForm.get('iosAppLink')?.touched"
+            <label for="iosappLink" class="form-label">iOS App Link</label>
+            <input id="iosappLink" type="text" class="form-control bg-white" formControlName="iosappLink"
+              [class.is-invalid]="siteForm.get('iosappLink')?.invalid && siteForm.get('iosappLink')?.touched" />
+            <div *ngIf="siteForm.get('iosappLink')?.invalid && siteForm.get('iosappLink')?.touched"
               class="invalid-feedback">
-              iOS App Link is required.
+              <div *ngIf="siteForm.get('iosappLink')?.errors?.['required']">
+                iOS App Link is required.
+              </div>
+              <div *ngIf="siteForm.get('iosappLink')?.errors?.['pattern']">
+                iOS App Link must be a valid URL starting with http:// or https://.
+              </div>
             </div>
           </div>
         </div>

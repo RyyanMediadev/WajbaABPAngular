@@ -14,6 +14,7 @@ export class CompanyService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Company',
+      body: input,
     },
     { apiName: this.apiName,...config });
   
@@ -38,6 +39,7 @@ export class CompanyService {
     this.restService.request<any, IActionResult>({
       method: 'PUT',
       url: '/api/Company',
+      body: input,
     },
     { apiName: this.apiName,...config });
 

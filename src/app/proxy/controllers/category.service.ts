@@ -14,6 +14,7 @@ export class CategoryService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Category',
+      params: { name: input.name, status: input.status, description: input.description },
       body: input.image,
     },
     { apiName: this.apiName,...config });
@@ -48,7 +49,7 @@ export class CategoryService {
     this.restService.request<any, IActionResult>({
       method: 'GET',
       url: '/api/Category',
-      params: { name: input.name, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { name: input.name, branchId: input.branchId, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
     { apiName: this.apiName,...config });
   

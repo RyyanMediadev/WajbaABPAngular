@@ -14,6 +14,7 @@ export class CouponService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Coupon',
+      params: { name: input.name, code: input.code, discount: input.discount, discountType: input.discountType, startDate: input.startDate, endDate: input.endDate, minimumOrderAmount: input.minimumOrderAmount, maximumDiscount: input.maximumDiscount, limitPerUser: input.limitPerUser, description: input.description },
       body: input.image,
     },
     { apiName: this.apiName,...config });

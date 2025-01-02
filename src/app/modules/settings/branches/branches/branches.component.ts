@@ -10,11 +10,12 @@ import { SettingsSidebarComponent } from "../../settings-sidebar/settings-sideba
 import { Router } from '@angular/router';
 import { ConfirmDeleteModalComponent } from 'src/app/shared/confirm-delete-modal/confirm-delete-modal.component';
 import { UpdateBranchDto } from '@proxy/dtos/branch-contract';
+import { TableComponent } from "../../../../shared/table/table.component";
 
 @Component({
   selector: 'app-branches',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, IconsComponent, SettingsSidebarComponent],
+  imports: [CommonModule, ReactiveFormsModule, IconsComponent, SettingsSidebarComponent, TableComponent],
   templateUrl: './branches.component.html',
   styleUrls: ['./branches.component.scss'],
 })
@@ -22,9 +23,35 @@ export class BranchesComponent implements OnInit {
   branches: UpdateBranchDto[] = [];
   isAddMode = true;
   selectedBranch: any = null;
-  branchLabel: string = 'Branches';
   pageSize = 10; // Default page size
   pageNumber = 0; // Default page number
+
+  columns = [
+    { field: 'name', header: 'Name' },
+    { field: 'status', header: 'Status' },
+    // { field: 'action', header: 'Action' },
+  ];
+
+  actions = [
+    {
+      icon: 'assets/images/edit.svg',
+      tooltip: 'Edit',
+      show: (row: any) => true,
+      callback: (row: any) => this.openAddEditModal(row),
+    },
+    {
+      icon: 'assets/images/view.svg',
+      tooltip: 'View',
+      show: (row: any) => true,
+      callback: (row: any) => this.openBranchDetailsAndNavigate(row),
+    },
+    {
+      icon: 'assets/images/delete.svg',
+      tooltip: 'Delete',
+      show: (row: any) => row.status === 1, // Show only for active branches
+      callback: (row: any) => this.openConfirmDeleteModal(row.id, row.name),
+    },
+  ];
 
   constructor(
     private modalService: NgbModal,
@@ -113,7 +140,6 @@ export class BranchesComponent implements OnInit {
       },
     });
   }
-
 
   openBranchDetailsAndNavigate(branch: UpdateBranchDto) {
     this.router.navigate(['/settings/branches', branch.id]);

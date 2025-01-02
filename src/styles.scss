@@ -62,24 +62,12 @@
   background-image: url('/assets/images/getting-started/x.svg');
 }
 
-tbody {
-  tr[_ngcontent-ng-c563922191]:nth-of-type(odd) {
-    background-color: #F5F5F5;
-  }
-
-  tr[_ngcontent-ng-c563922191]:nth-of-type(even) {
-    background-color: white;
-  }
-}
-
-
 .section-title {
   font-size: 1.25rem !important;
   font-weight: bold;
   margin: 0;
   // padding: 0;
 }
-
 
 /* Hide the tooltip by default */
 .tooltip-text {

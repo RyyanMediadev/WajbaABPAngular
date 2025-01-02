@@ -1,0 +1,138 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { UpadteCurrency } from '@proxy/dtos/currencies-contract';
+import { CurrenciesService } from '@proxy/controllers';
+import { AfterActionService } from 'src/app/services/after-action/after-action-service.service';
+import { IconsComponent } from "../../../../shared/icons/icons.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddCurrenciesComponent } from '../add-currencies/add-currencies.component';
+import { SettingsSidebarComponent } from "../../settings-sidebar/settings-sidebar.component";
+import { TableComponent } from "../../../../shared/table/table.component";
+import { ConfirmDeleteModalComponent } from 'src/app/shared/confirm-delete-modal/confirm-delete-modal.component';
+
+@Component({
+  selector: 'app-currencies',
+  standalone: true,
+  imports: [CommonModule, RouterModule, IconsComponent, SettingsSidebarComponent, TableComponent],
+
+  templateUrl: './currencies.component.html',
+  styleUrl: './currencies.component.scss'
+})
+export class CurrenciesComponent {
+  isModalOpen: boolean = false;
+  isMenuOpen: boolean = false;
+  currencies: UpadteCurrency[] = [];
+  selectedCurrency: UpadteCurrency | null = null;
+
+  isConfirmDeleteModalOpen: boolean = false;
+  currencyToDeleteId!: number;
+
+  columns = [
+    { field: 'name', header: 'Name' },
+    { field: 'symbol', header: 'Symbol' },
+    { field: 'code', header: 'Code' },
+    { field: 'rate', header: 'Exchange Rate' },
+    { field: 'action', header: 'Action' },
+  ];
+
+  actions = [
+    {
+      icon: 'assets/images/edit.svg',
+      tooltip: 'Edit',
+      show: (row: any) => true,
+      callback: (row: any) => this.openAddEditModal(row),
+    },
+    {
+      icon: 'assets/images/delete.svg',
+      tooltip: 'Delete',
+      show: (row: any) => row.status === 1, // Show only for active branches
+      callback: (row: any) => this.openConfirmDeleteModal(row.id, row.name),
+    },
+  ];
+
+
+  constructor(
+    private route: ActivatedRoute,
+    private CurrenciesService: CurrenciesService,
+    private afterActionService: AfterActionService,
+    private modalService: NgbModal,
+  ) { }
+
+  ngOnInit(): void {
+    this.loadCurrencies();
+  }
+
+  loadCurrencies() {
+    // this.CurrenciesService.getList().subscribe((response: any) => {
+    //   if (response) {
+    //     this.currencies = response.data;
+    //     console.log("currency : " + response.data)
+    //   } else {
+    //     console.error('The response is not an array:', response);
+    //     this.currencies = [];
+    //   }
+    // }, (error) => {
+    //   console.error('Failed to load currencies:', error);
+    // });
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  openAddEditModal(branch?: UpadteCurrency): void {
+    const modalRef = this.modalService.open(AddCurrenciesComponent, {
+      size: 'lg',
+      centered: true,
+      backdrop: 'static',
+    });
+
+    modalRef.componentInstance.isOpen = true;
+    modalRef.componentInstance.branch = branch || null;
+
+    modalRef.componentInstance.close.subscribe(() => {
+      modalRef.close();
+    });
+
+    modalRef.result
+      .then((result) => {
+        if (result === 'saved') {
+          this.loadCurrencies();
+        }
+      })
+      .catch((reason) => {
+        console.log('Modal dismissed:', reason);
+      });
+  }
+
+  openConfirmDeleteModal(branchId: number, branchName: string): void {
+    const modalRef = this.modalService.open(ConfirmDeleteModalComponent, {
+      size: 'lg',
+      centered: true,
+      backdrop: 'static',
+    });
+
+    // Pass data to the modal instance
+    modalRef.componentInstance.id = branchId;
+    modalRef.componentInstance.name = branchName;
+
+    // Handle modal result
+    modalRef.componentInstance.confirmDelete.subscribe((id) => {
+      this.deleteCurrency(id); // Call the delete method with the branch ID
+    });
+
+    modalRef.componentInstance.cancelDelete.subscribe(() => {
+      modalRef.close(); // Close modal on cancel
+    });
+  }
+
+  deleteCurrency(id: number): void {
+    this.CurrenciesService.delete(id).subscribe(() => {
+      console.log(`Currency with id: ${id} deleted successfully.`);
+      this.afterActionService.reloadCurrentRoute();
+    }, (error) => {
+      console.error('Failed to delete currency:', error);
+    });
+  }
+}

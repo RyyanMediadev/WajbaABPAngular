@@ -14,6 +14,7 @@ export class DineIntableService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/DineIntable',
+      body: input,
     },
     { apiName: this.apiName,...config });
   
@@ -47,6 +48,7 @@ export class DineIntableService {
     this.restService.request<any, IActionResult>({
       method: 'PUT',
       url: `/api/DineIntable/${id}`,
+      body: input,
     },
     { apiName: this.apiName,...config });
 

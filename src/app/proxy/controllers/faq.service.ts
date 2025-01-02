@@ -14,6 +14,7 @@ export class FaqService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Faq',
+      body: input,
     },
     { apiName: this.apiName,...config });
   

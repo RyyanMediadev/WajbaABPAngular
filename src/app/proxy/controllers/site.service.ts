@@ -14,6 +14,7 @@ export class SiteService {
     this.restService.request<any, IActionResult>({
       method: 'POST',
       url: '/api/Site',
+      body: input,
     },
     { apiName: this.apiName,...config });
   

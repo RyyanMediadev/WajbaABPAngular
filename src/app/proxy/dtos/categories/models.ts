@@ -11,6 +11,7 @@ export interface CreateUpdateCategoryDto {
 
 export interface GetCategoryInput extends PagedAndSortedResultRequestDto {
   name?: string;
+  branchId?: number;
 }
 
 export interface UpdateCategory {
