@@ -7,9 +7,9 @@
     </div>
 
     <form [formGroup]="otpForm" (ngSubmit)="onSubmit()" class="form-container">
-      <div class="form-row">
+      <div class="row">
         <!-- Order Type -->
-        <div class="form-group">
+        <div class="col-md-6 mb-3">
           <label>Order Type <span class="text-danger">*</span></label>
           <select formControlName="orderType" class="form-select bg-white">
             <option value="" disabled selected>--</option>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- OTP Length -->
-        <div class="form-group">
+        <div class="col-md-6 mb-3">
           <label>OTP Length <span class="text-danger">*</span></label>
           <select formControlName="otpLength" class="form-select bg-white">
             <option value="" disabled selected>--</option>
@@ -34,8 +34,8 @@
       </div>
 
       <!-- OTP Expire Time -->
-      <div class="form-row">
-        <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 mb-3">
           <label>OTP Expire Time <span class="text-danger">*</span></label>
           <select formControlName="otpExpireTime" class="form-select bg-white">
             <option value="" disabled selected>--</option>

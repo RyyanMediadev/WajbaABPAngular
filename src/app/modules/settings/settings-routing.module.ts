@@ -44,8 +44,11 @@ const routes: Routes = [
     path: 'languages',
     loadChildren: () => import('./languages/languages.module').then(m => m.LanguagesModule),
   },
-  // { path: 'pages', component: PagesComponent },s
-  // { path: 'role', component: RoleComponent },
+  // { path: 'pages', component: PagesComponent },
+  {
+    path: 'role-and-permissions',
+    loadChildren: () => import('./role-and-permissions/role-and-permissions.module').then(m => m.RoleAndPermissionsModule),
+  },
   {
     path: 'taxes',
     loadChildren: () => import('./taxes/taxes.module').then(m => m.TaxesModule),

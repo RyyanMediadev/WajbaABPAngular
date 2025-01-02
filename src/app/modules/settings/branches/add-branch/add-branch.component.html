@@ -106,10 +106,3 @@
     </form>
   </div>
 </div>
-
-<div *ngIf="isMapModalOpen" class="modal-overlay" (click)="closeMapModal()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
-    <app-map-dialog (coordinatesSelected)="setCoordinates($event.longitude, $event.latitude)"
-      (close)="closeMapModal()"></app-map-dialog>
-  </div>
-</div>

@@ -12,7 +12,8 @@
         <div class="col-md-12">
           <label for="branchName" class="form-label">Name <span class="text-danger">*</span></label>
           <input type="text" id="branchName" formControlName="name" class="form-control bg-white">
-          <div *ngIf="itemCategoryForm.get('name')?.touched && itemCategoryForm.get('name')?.invalid" class="text-danger">
+          <div *ngIf="itemCategoryForm.get('name')?.touched && itemCategoryForm.get('name')?.invalid"
+            class="text-danger">
             <small *ngIf="itemCategoryForm.get('name')?.errors?.['required']">Name is required.</small>
           </div>
         </div>
@@ -22,7 +23,8 @@
         <div class="col-md-6 mb-3">
           <label for="branchImage" class="form-label">Image <span class="text-danger">*</span></label>
           <input type="file" id="branchImage" formControlName="image" class="form-control bg-white">
-          <div *ngIf="itemCategoryForm.get('image')?.touched && itemCategoryForm.get('image')?.invalid" class="text-danger">
+          <div *ngIf="itemCategoryForm.get('image')?.touched && itemCategoryForm.get('image')?.invalid"
+            class="text-danger">
             <small *ngIf="itemCategoryForm.get('image')?.errors?.['required']">Image is required.</small>
           </div>
         </div>
@@ -31,11 +33,11 @@
           <label>Status</label>
           <div class="d-flex align-items-center gap-2">
             <label class="btn radio-label">
-              <input type="radio" formControlName="status" [value]="'active'" class="d-none">
+              <input type="radio" formControlName="status" [value]="1" class="d-none">
               Active
             </label>
             <label class="btn radio-label">
-              <input type="radio" formControlName="status" [value]="'inactive'" class="d-none">
+              <input type="radio" formControlName="status" [value]="0" class="d-none">
               Inactive
             </label>
           </div>

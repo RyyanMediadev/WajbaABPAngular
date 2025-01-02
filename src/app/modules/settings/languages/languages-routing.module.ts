@@ -8,7 +8,6 @@ const routes: Routes = [
   { path: ':id', component: LanguagesDetailsComponent }, // Matches '/settings/languages/:id'
 ];
 
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

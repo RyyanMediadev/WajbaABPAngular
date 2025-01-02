@@ -5,7 +5,7 @@ import { IconsComponent } from 'src/app/shared/icons/icons.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UpdateBranchDto } from '@proxy/dtos/branch-contract';
-import { BranchService } from '@proxy/controllers';
+import { CategoryService } from '@proxy/controllers';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { PagedAndSortedResultRequestDto } from '@abp/ng.core';
@@ -20,11 +20,8 @@ import { ConfirmDeleteModalComponent } from 'src/app/shared/confirm-delete-modal
   styleUrl: './item-categories.component.scss'
 })
 export class ItemCategoriesComponent {
-  branches: UpdateBranchDto[] = [];
+  itemCategories: UpdateBranchDto[] = [];
   isAddMode = true;
-  selectedBranch: any = null;
-  pageSize = 10; // Default page size
-  pageNumber = 0; // Default page number
 
   columns = [
     { field: 'name', header: 'Name' },
@@ -43,7 +40,7 @@ export class ItemCategoriesComponent {
       icon: 'assets/images/view.svg',
       tooltip: 'View',
       show: (row: any) => true,
-      callback: (row: any) => this.openBranchDetailsAndNavigate(row),
+      callback: (row: any) => this.openItemCategoryDetailsAndNavigate(row),
     },
     {
       icon: 'assets/images/delete.svg',
@@ -55,34 +52,34 @@ export class ItemCategoriesComponent {
 
   constructor(
     private modalService: NgbModal,
-    private branchService: BranchService,
+    private categoryService: CategoryService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.loadBranches();
+    this.loadItemCategories();
   }
 
-  // Load all branches
-  loadBranches(): void {
-    const request: PagedAndSortedResultRequestDto = {
-      skipCount: this.pageNumber * this.pageSize,
-      maxResultCount: this.pageSize,
-      sorting: 'name', // Default sorting field
+  // Load all Item Categories
+  loadItemCategories(): void {
+    const defaultInput: PagedAndSortedResultRequestDto = {
+      sorting: '',
+      skipCount: 0,
+      maxResultCount: 10
     };
 
-    this.branchService.getList(request).subscribe({
+    this.categoryService.getList(defaultInput).subscribe({
       next: (response) => {
         console.log(response)
-        this.branches = response.data.items;
+        this.itemCategories = response.data.items;
       },
       error: (err) => {
-        console.error('Error loading branches:', err);
+        console.error('Error loading Item Categories:', err);
       },
     });
   }
 
-  openAddEditModal(branch?: UpdateBranchDto): void {
+  openAddEditModal(ItemCategory?: UpdateBranchDto): void {
     const modalRef = this.modalService.open(AddItemCategoriesComponent, {
       size: 'lg',
       centered: true,
@@ -90,7 +87,7 @@ export class ItemCategoriesComponent {
     });
 
     modalRef.componentInstance.isOpen = true;
-    modalRef.componentInstance.branch = branch || null;
+    modalRef.componentInstance.ItemCategory = ItemCategory || null;
 
     modalRef.componentInstance.close.subscribe(() => {
       modalRef.close();
@@ -99,7 +96,7 @@ export class ItemCategoriesComponent {
     modalRef.result
       .then((result) => {
         if (result === 'saved') {
-          this.loadBranches();
+          this.loadItemCategories();
         }
       })
       .catch((reason) => {
@@ -107,7 +104,7 @@ export class ItemCategoriesComponent {
       });
   }
 
-  openConfirmDeleteModal(branchId: number, branchName: string): void {
+  openConfirmDeleteModal(ItemCategoryId: number, ItemCategoryName: string): void {
     const modalRef = this.modalService.open(ConfirmDeleteModalComponent, {
       size: 'lg',
       centered: true,
@@ -115,12 +112,12 @@ export class ItemCategoriesComponent {
     });
 
     // Pass data to the modal instance
-    modalRef.componentInstance.id = branchId;
-    modalRef.componentInstance.name = branchName;
+    modalRef.componentInstance.id = ItemCategoryId;
+    modalRef.componentInstance.name = ItemCategoryName;
 
     // Handle modal result
     modalRef.componentInstance.confirmDelete.subscribe((id) => {
-      this.deleteBranch(id); // Call the delete method with the branch ID
+      this.deleteItemCategory(id); // Call the delete method with the branch ID
     });
 
     modalRef.componentInstance.cancelDelete.subscribe(() => {
@@ -128,19 +125,19 @@ export class ItemCategoriesComponent {
     });
   }
 
-  deleteBranch(id: number): void {
-    this.branchService.delete(id).subscribe({
+  deleteItemCategory(id: number): void {
+    this.categoryService.delete(id).subscribe({
       next: () => {
-        this.branches = this.branches.filter((branch) => branch.id !== id);
+        this.itemCategories = this.itemCategories.filter((itemCategory) => itemCategory.id !== id);
         this.modalService.dismissAll(); // Close all modals
       },
       error: (err) => {
-        console.error('Error deleting branch:', err);
+        console.error('Error deleting Item Category:', err);
       },
     });
   }
 
-  openBranchDetailsAndNavigate(branch: UpdateBranchDto) {
-    this.router.navigate(['/settings/branches', branch.id]);
+  openItemCategoryDetailsAndNavigate(ItemCategory: UpdateBranchDto) {
+    this.router.navigate(['/settings/item-categories', ItemCategory.id]);
   }
 }

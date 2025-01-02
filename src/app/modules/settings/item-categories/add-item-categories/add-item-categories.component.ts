@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BranchService } from '@proxy/controllers';
-import { CreateBranchDto, UpdateBranchDto } from '@proxy/dtos/branch-contract';
+import { CategoryService } from '@proxy/controllers';
+import { CreateBranchDto } from '@proxy/dtos/branch-contract';
 import { IconsComponent } from "../../../../shared/icons/icons.component";
 import { CommonModule } from '@angular/common';
+import { CreateUpdateCategoryDto, UpdateCategory } from '@proxy/dtos/categories';
 
 @Component({
   selector: 'app-add-item-categories',
@@ -14,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddItemCategoriesComponent {
   @Input() isOpen: boolean = false;
-  @Input() branch: UpdateBranchDto | null = null;
+  @Input() itemCategory: UpdateCategory | null = null;
   @Output() close = new EventEmitter<void>();
 
   itemCategoryForm: FormGroup;
@@ -22,36 +23,30 @@ export class AddItemCategoriesComponent {
 
   constructor(
     private fb: FormBuilder,
-    private branchService: BranchService,
+    private categoryService: CategoryService,
   ) {
     this.itemCategoryForm = this.fb.group({
       id: [null],
       name: ['', Validators.required],
       image: [null, Validators.required],
       description: ['', Validators.required],
-      status: ['active'],
+      status: [1],
     });
   }
 
   ngOnInit(): void {
-    if (this.branch) {
-      this.populateForm(this.branch);
+    if (this.itemCategory) {
+      this.populateForm(this.itemCategory);
     }
   }
 
-  populateForm(branch: UpdateBranchDto) {
+  populateForm(itemCategory: UpdateCategory) {
     this.itemCategoryForm.patchValue({
-      id: branch.id,
-      name: branch.name,
-      email: branch.email,
-      city: branch.city,
-      state: branch.state,
-      phone: branch.phone,
-      zipCode: branch.zipCode,
-      address: branch.address,
-      status: branch.status === 1 ? 'active' : 'inactive',
-      longitude: branch.longitude || '',
-      latitude: branch.latitude || '',
+      id: itemCategory.id,
+      name: itemCategory.name,
+      image: itemCategory.image,
+      description: itemCategory.description,
+      status: itemCategory.status
     });
   }
 
@@ -62,41 +57,41 @@ export class AddItemCategoriesComponent {
   submitForm() {
     if (this.itemCategoryForm.valid) {
       // Declare the formValue outside the if-else block
-      let formValue: CreateBranchDto | UpdateBranchDto;
+      let formValue: CreateBranchDto | UpdateCategory;
 
       // Determine whether it's an update or create operation
       if (this.itemCategoryForm.value.id) {
-        formValue = this.itemCategoryForm.value as UpdateBranchDto;
+        formValue = this.itemCategoryForm.value as UpdateCategory;
       } else {
         formValue = this.itemCategoryForm.value as CreateBranchDto;
       }
 
       console.log(formValue);
 
-      if (this.branch) {
-        // Update existing branch
-        this.branchService.update(formValue as UpdateBranchDto)
+      if (this.itemCategory) {
+        // Update existing Item Category
+        this.categoryService.update(formValue as UpdateCategory)
           .subscribe(
             response => {
               // Handle successful response
-              console.log('Branch updated successfully:', response);
+              console.log('Item Category updated successfully:', response);
             },
             error => {
               // Handle error response
-              console.error('Error updating branch:', error);
+              console.error('Error updating Item Category:', error);
             }
           );
       } else {
         // Create a new branch
-        this.branchService.create(formValue as CreateBranchDto)
+        this.categoryService.create(formValue as CreateUpdateCategoryDto)
           .subscribe(
             response => {
               // Handle successful response
-              console.log('Branch created successfully:', response);
+              console.log('Item Category created successfully:', response);
             },
             error => {
               // Handle error response
-              console.error('Error creating branch:', error);
+              console.error('Error creating Item Category:', error);
             }
           );
       }

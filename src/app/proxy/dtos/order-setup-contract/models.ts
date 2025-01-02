@@ -8,6 +8,9 @@ export interface CreateUpdateOrderSetupDto {
   chargePerKilo: number;
   isTakeawayEnabled: boolean;
   isDeliveryEnabled: boolean;
+  ontime?: string;
+  warning?: string;
+  delayTime?: string;
 }
 
 export interface GetOrderSetupInput extends PagedAndSortedResultRequestDto {
